@@ -1,9 +1,13 @@
 import React from 'react';
 
-import './App.css';
+import { useQuery } from '@apollo/client';
+
+// import { TECHNOLOGIES } from './common/graphql/technologies.query';
 
 const App = () => {
-  return <div>Hello world</div>;
+  // const { data } = useQuery(TECHNOLOGIES);
+
+  return <div></div>;
 };
 
 export { App };
