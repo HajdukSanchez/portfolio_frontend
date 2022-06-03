@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 
 import { ApolloProvider } from '@apollo/client';
 
+import './common/style/styles.css';
 import { App } from './App';
 import { client } from './api/apollo-client';
 
