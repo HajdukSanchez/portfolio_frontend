@@ -2,7 +2,10 @@ import styled from 'styled-components';
 import { globalStylesVariables, mediaQueries } from '../../common/style/styles';
 
 const MenuContainer = styled.header`
-  position: relative;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -44,7 +47,7 @@ const MenuList = styled.ul`
 const MenuItem = styled.li`
   margin: 1.5rem 0;
   padding: 1rem 2rem;
-  border: 0.1rem solid ${globalStylesVariables.colors.alternative};
+  border: ${globalStylesVariables.border} ${globalStylesVariables.colors.alternative};
   border-radius: ${globalStylesVariables.borderRadius};
   text-align: center;
   font-size: ${globalStylesVariables.text.text};

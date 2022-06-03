@@ -4,6 +4,7 @@
 const globalStylesVariables = {
   borderRadius: '0.8rem',
   transition: '0.3s ease-in-out',
+	border: '0.1rem solid',
   colors: {
     primary: '#16213E',
     secondary: '#0F3460',
@@ -16,6 +17,7 @@ const globalStylesVariables = {
     colors: {
       primary: 'rgba(255, 255, 255, 0.8)',
       secondary: '#E94560',
+      alternative: '#16213E',
     },
   },
 };
