@@ -4,7 +4,7 @@ import { globalStylesVariables, mediaQueries } from '../../../../common/style/st
 const Section = styled.section`
   display: flex;
   flex-direction: column;
-  padding: 4rem 1rem;
+  padding: 4rem 1rem 0rem;
   background-color: ${globalStylesVariables.colors.secondary};
   width: 100%;
 
@@ -13,11 +13,11 @@ const Section = styled.section`
   }
 
   @media ${mediaQueries.tablet} {
-    padding: 10rem 10rem;
+    padding: 10rem 10rem 0;
   }
 
   @media ${mediaQueries.desktopXL} {
-    padding: 10rem 16rem;
+    padding: 10rem 16rem 0;
   }
 `;
 
@@ -80,7 +80,7 @@ const ProjectsColumn = styled.div`
     }
 
     &:last-child {
-      padding-top: 8rem;
+      padding-top: 12rem;
       padding-left: 1rem;
     }
   }

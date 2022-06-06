@@ -1,5 +1,6 @@
 import React, { ReactNode } from 'react';
-import { Menu } from '../';
+
+import { Menu, Footer } from '../';
 
 interface LayoutProps {
   children?: ReactNode | ReactNode[];
@@ -10,6 +11,7 @@ const Layout = ({ children }: LayoutProps) => {
     <>
       <Menu />
       {children}
+      <Footer />
     </>
   );
 };

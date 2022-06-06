@@ -1,7 +1,9 @@
 export { Menu } from './menu/Menu.components';
 export { Arrow } from './arrow/Arrow.component';
+export { Footer } from './footer/Footer.component';
 export { Layout } from './layout/Layout.component';
 export { Button } from './button/Button.component';
 export { ProjectCard } from './projectCard/ProjectCard.component';
+export { LinkedInBadge } from './linkedInBadge/LinkedInBadge.component';
 export { CertificateCard } from './certificateCard/CertificateCard.component';
 export { TechnologyImage } from './technologyImage/TechnologyImag.component';

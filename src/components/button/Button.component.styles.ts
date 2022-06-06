@@ -36,8 +36,7 @@ const ButtonContainer = styled.div<{ type: ButtonType; withIcon: boolean }>`
   }
 
   & > svg {
-    width: 3rem;
-    height: 2rem;
+    font-size: ${globalStylesVariables.textSize.semiLarge};
     color: ${globalStylesVariables.textColors.tertiary};
     transition: ${globalStylesVariables.transition};
   }
@@ -47,7 +46,7 @@ const ButtonContainer = styled.div<{ type: ButtonType; withIcon: boolean }>`
     css`
       padding: 1rem 2rem;
       background-color: ${globalStylesVariables.colors.alternative};
-      box-shadow: 2px 2px 5px 0px rgb(0, 0, 0, 0.75);
+      box-shadow: ${globalStylesVariables.boxShadow};
 
       & > span {
         color: ${globalStylesVariables.textColors.alternative};
@@ -60,10 +59,6 @@ const ButtonContainer = styled.div<{ type: ButtonType; withIcon: boolean }>`
         & > span {
           color: ${globalStylesVariables.textColors.primary};
         }
-
-        & > svg {
-          color: ${globalStylesVariables.textColors.primary};
-        }
       }
     `}
 
@@ -72,14 +67,14 @@ const ButtonContainer = styled.div<{ type: ButtonType; withIcon: boolean }>`
     css`
       padding: 1rem 2.5rem;
       background-color: transparent;
-      box-shadow: 1px 2px 5px 0px rgb(0, 0, 0, 0.75);
+      box-shadow: ${globalStylesVariables.boxShadow};
     `}
 
   ${({ type }) =>
     type === 'more' &&
     css`
       padding: 0.8rem 8rem;
-      box-shadow: 1px 2px 5px 0px rgb(0, 0, 0, 0.75);
+      box-shadow: ${globalStylesVariables.boxShadow};
 
       &:hover {
         background-color: ${globalStylesVariables.colors.primary};
@@ -92,7 +87,7 @@ const ButtonContainer = styled.div<{ type: ButtonType; withIcon: boolean }>`
     css`
       padding: 1rem 0;
       border-radius: 0;
-			border-color: ${globalStylesVariables.colors.secondary};
+      border-color: ${globalStylesVariables.colors.secondary};
 
       & > svg {
         animation: ${leftToRight} ${globalStylesVariables.animation};

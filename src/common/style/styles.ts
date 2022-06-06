@@ -6,6 +6,7 @@ const globalStylesVariables = {
   transition: '0.3s ease-in-out',
   border: '0.1rem solid',
   animation: '2s alternate infinite ease-in-out',
+  boxShadow: '1px 2px 5px 0px rgb(0, 0, 0, 0.75)',
   colors: {
     primary: '#19212c',
     secondary: '#1e2f37',
@@ -13,6 +14,7 @@ const globalStylesVariables = {
     alternativeOpacity: 'rgba(255, 255, 255, 0.6)',
   },
   textSize: {
+    extraSmall: '1.2rem',
     small: '1.6rem',
     medium: '1.8rem',
     large: '2rem',

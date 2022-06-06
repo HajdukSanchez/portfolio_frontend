@@ -19,7 +19,7 @@ const Card = styled.article`
 
   &:hover {
     transform: scale(1.05);
-    box-shadow: 1px 2px 5px 0px rgb(0, 0, 0, 0.75);
+    box-shadow: ${globalStylesVariables.boxShadow};
   }
 `;
 
