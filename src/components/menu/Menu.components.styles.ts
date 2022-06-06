@@ -2,18 +2,45 @@ import styled from 'styled-components';
 import { globalStylesVariables, mediaQueries } from '../../common/style/styles';
 
 const MenuContainer = styled.header`
-  position: fixed;
+  position: sticky;
   top: 0;
-  left: 0;
-  right: 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem;
+  padding: 1.5rem 1rem;
   background-color: ${globalStylesVariables.colors.primary};
+  border-bottom: 0.01rem solid ${globalStylesVariables.colors.alternativeOpacity};
+	z-index: ${globalStylesVariables.zIndex.level3};
+
+  @media ${mediaQueries.tablet} {
+    padding: 0 1rem;
+  }
 
   @media ${mediaQueries.desktop} {
-    padding: 1rem 10rem;
+    padding: 0 10rem;
+  }
+
+  @media ${mediaQueries.desktopXL} {
+    padding: 0 16rem;
+  }
+`;
+
+const Image = styled.div`
+  & > a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    & > img {
+      width: 1.5rem;
+    }
+
+    & > span {
+      margin-left: 1rem;
+      color: white;
+      font-size: 1.4rem;
+			font-weight: 500;
+    }
   }
 `;
 
@@ -25,6 +52,7 @@ const MenuNav = styled.nav<{ showMenu: boolean }>`
   align-items: center;
   background: ${globalStylesVariables.colors.primary};
   transition: all ${globalStylesVariables.transition};
+  z-index: ${globalStylesVariables.zIndex.level3};
 
   @media ${mediaQueries.tablet} {
     position: static;
@@ -50,7 +78,8 @@ const MenuItem = styled.li`
   border: ${globalStylesVariables.border} ${globalStylesVariables.colors.alternative};
   border-radius: ${globalStylesVariables.borderRadius};
   text-align: center;
-  font-size: ${globalStylesVariables.text.text};
+  font-size: ${globalStylesVariables.textSize.small};
+	font-weight: 500;
   background-color: ${globalStylesVariables.colors.alternative};
   transform: translateX(0);
   transition: all ${globalStylesVariables.transition};
@@ -61,26 +90,25 @@ const MenuItem = styled.li`
 
     @media ${mediaQueries.tablet} {
       transform: translateX(0);
+      border-bottom-color: ${globalStylesVariables.colors.alternative};
     }
   }
 
   &:last-child {
-    border-color: ${globalStylesVariables.colors.alternative};
-    background-color: ${globalStylesVariables.colors.secondary};
-
-    & a {
-      color: ${globalStylesVariables.text.colors.secondary};
-    }
+    margin-right: 0;
   }
 
   & a {
-    color: ${globalStylesVariables.text.colors.primary};
+    color: ${globalStylesVariables.textColors.tertiary};
   }
 
   @media ${mediaQueries.tablet} {
-    margin: 0 0.5rem;
-    padding: 0.5rem 1rem;
+    margin: 0 2rem;
+    padding: 1.5rem 0;
     background: initial;
+    border: 0;
+    border-radius: 0;
+    border-bottom: 0.2rem solid transparent;
   }
 `;
 
@@ -94,13 +122,13 @@ const HamburgerButton = styled.button<{ showMenu: boolean }>`
   background-color: transparent;
   border: 0;
   cursor: pointer;
-  z-index: 100;
+  z-index: ${globalStylesVariables.zIndex.level4};
 
   & span {
     position: relative;
     display: inline-block;
     width: 90%;
-    height: 0.4rem;
+    height: 0.3rem;
     border-radius: ${globalStylesVariables.borderRadius};
     background-color: ${globalStylesVariables.colors.alternative};
   }
@@ -112,7 +140,7 @@ const HamburgerButton = styled.button<{ showMenu: boolean }>`
     left: 0;
     display: inline-block;
     width: 100%;
-    height: 0.4rem;
+    height: 0.3rem;
     border-radius: ${globalStylesVariables.borderRadius};
     background: ${globalStylesVariables.colors.alternative};
     transition: all ${globalStylesVariables.transition};
@@ -133,4 +161,4 @@ const HamburgerButton = styled.button<{ showMenu: boolean }>`
   }
 `;
 
-export { MenuContainer, MenuNav, MenuList, MenuItem, HamburgerButton };
+export { MenuContainer, Image, MenuNav, MenuList, MenuItem, HamburgerButton };

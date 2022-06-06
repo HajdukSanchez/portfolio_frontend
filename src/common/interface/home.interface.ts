@@ -5,6 +5,7 @@
  */
 export interface HomeSectionProps {
   id: number;
+	idSection: string;
   title: string;
   image: string;
   description: string;
