@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 
-import { HamburgerButton, MenuContainer, MenuItem, MenuList, MenuNav } from './Menu.components.styles';
+import { AppContext } from '../../context/AppContext';
+import { HamburgerButton, Image, MenuContainer, MenuItem, MenuList, MenuNav } from './Menu.components.styles';
 
 /**
  * Data model for menu options (labels and text)
@@ -14,21 +15,24 @@ interface MenuOption {
 }
 
 const Menu = () => {
-  const [showMenu, setShowMenu] = useState<boolean>(false);
+  const logo = require('../../common/assets/images/logo.png'); // Personal logo import
+  const { showMenu, toggleMenu } = useContext(AppContext);
   const menuItems: MenuOption[] = [
     { id: 1, label: 'Home', link: '/' },
     { id: 2, label: 'My projects', link: '/' },
     { id: 3, label: 'Certificates', link: '/' },
-    { id: 4, label: 'Technologies', link: '/' },
     { id: 5, label: 'About me', link: '/' },
   ];
 
   return (
     <MenuContainer>
-      <div>
-        <img src="../../common/assets/images/logo.png" alt="logo" />
-      </div>
-      <HamburgerButton onClick={() => setShowMenu(!showMenu)} showMenu={showMenu}>
+      <Image>
+        <a href="/">
+          <img src={logo} alt="logo" />
+					<span>Jozek Hajduk</span>
+        </a>
+      </Image>
+      <HamburgerButton onClick={toggleMenu} showMenu={showMenu}>
         <span />
       </HamburgerButton>
       <MenuNav showMenu={showMenu}>
@@ -38,9 +42,6 @@ const Menu = () => {
               <a href={item.link}>{item.label}</a>
             </MenuItem>
           ))}
-          <MenuItem>
-            <a href="#">Download CV</a>
-          </MenuItem>
         </MenuList>
       </MenuNav>
     </MenuContainer>
