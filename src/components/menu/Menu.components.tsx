@@ -16,7 +16,11 @@ interface MenuOption {
 
 const Menu = () => {
   const logo = require('../../common/assets/images/logo.png'); // Personal logo import
-  const { showMenu, toggleMenu } = useContext(AppContext);
+  const {
+    showMenu,
+    user: { username },
+    toggleMenu,
+  } = useContext(AppContext);
   const menuItems: MenuOption[] = [
     { id: 1, label: 'Home', link: '/' },
     { id: 2, label: 'My projects', link: '/' },
@@ -29,7 +33,7 @@ const Menu = () => {
       <Image>
         <a href="/">
           <img src={logo} alt="logo" />
-					<span>Jozek Hajduk</span>
+          <span>{username}</span>
         </a>
       </Image>
       <HamburgerButton onClick={toggleMenu} showMenu={showMenu}>

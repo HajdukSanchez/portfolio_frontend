@@ -1,54 +1,43 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+
+import { useQuery } from '@apollo/client';
 
 import { TechnologyImage } from '../../../../components';
-import { Technology } from '../../../../common/interface/technology.interface';
+import { TechnologySectionProps } from '../../home.page.interface';
+import { Technology, TopTechnologiesVariables } from '../../../../common/interface/technology.interface';
 import { Section, TechnologiesList, Title } from './Technologies.section.styles';
+import { GET_TOP_TECHNOLOGIES } from '../../../../common/graphql/technology.query';
 
-const TechnologiesSection = () => {
-  const data: Technology[] = [
-    {
-      id: 1,
-      name: 'CSS3',
-      image: 'https://cdn-icons-png.flaticon.com/512/121/121537.png',
-      primaryColor: 'red',
-      secondaryColor: 'red',
-    },
-    {
-      id: 2,
-      name: 'CSS3',
-      image: 'https://cdn-icons-png.flaticon.com/512/121/121537.png',
-      primaryColor: 'red',
-      secondaryColor: 'red',
-    },
-    {
-      id: 3,
-      name: 'CSS3',
-      image: 'https://cdn-icons-png.flaticon.com/512/121/121537.png',
-      primaryColor: 'red',
-      secondaryColor: 'red',
-    },
-    {
-      id: 1,
-      name: 'CSS3',
-      image: 'https://cdn-icons-png.flaticon.com/512/121/121537.png',
-      primaryColor: 'red',
-      secondaryColor: 'red',
-    },
-    {
-      id: 2,
-      name: 'CSS3',
-      image: 'https://cdn-icons-png.flaticon.com/512/121/121537.png',
-      primaryColor: 'red',
-      secondaryColor: 'red',
-    },
-  ];
+const TechnologiesSection = ({ title }: TechnologySectionProps) => {
+  const [technologies, setTechnologies] = useState<Technology[]>([]);
+  const { data } = useQuery<any, TopTechnologiesVariables>(GET_TOP_TECHNOLOGIES, { variables: { limit: 3, outstanding: true } });
+
+  useEffect(() => {
+    createObject();
+  }, [data]);
+
+  const createObject = () => {
+    if (data) {
+      setTechnologies([]); // Reset technologies
+      data.technologies.data.map(({ attributes }: any) => {
+        const newTechnology: Technology = {
+          uid: attributes.uid,
+          name: attributes.name,
+          primaryColor: attributes.primaryColor,
+          secondaryColor: attributes.secondaryColor,
+          image: `${process.env.REACT_APP_BASE_STRAPI_URL}${attributes.picture.data.attributes.url}`,
+        };
+        setTechnologies((prevState) => [...prevState, newTechnology]);
+      });
+    }
+  };
 
   return (
     <Section>
-      <Title>Technologies I work with</Title>
+      <Title>{title}</Title>
       <TechnologiesList>
-        {data.map((item: Technology) => (
-          <TechnologyImage {...item} key={item.id} />
+        {technologies.map((item: Technology, index: number) => (
+          <TechnologyImage {...item} key={`${index}-${item.uid}`} />
         ))}
       </TechnologiesList>
     </Section>

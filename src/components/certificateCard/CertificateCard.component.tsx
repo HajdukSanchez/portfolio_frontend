@@ -3,15 +3,15 @@ import React from 'react';
 import { Certificate } from '../../common/interface/certificate.interface';
 import { Card, Description, Image, Information, Title } from './CertificateCard.component.styles';
 
-const CertificateCard = ({ image, title, description }: Certificate) => {
+const CertificateCard = ({ image, name, comment }: Certificate) => {
   return (
     <Card>
       <Image>
-        <img src={image} alt={title} />
+        <img src={image} alt={name} />
       </Image>
       <Information>
-        <Title>{title}</Title>
-        <Description>{description}</Description>
+        <Title>{name}</Title>
+        <Description>{comment}</Description>
       </Information>
     </Card>
   );

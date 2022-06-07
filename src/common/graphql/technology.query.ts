@@ -1,10 +1,11 @@
 import { gql } from '@apollo/client';
 
-const TECHNOLOGIES = gql`
-  query {
-    technologies {
+const GET_TOP_TECHNOLOGIES = gql`
+  query GetTopTechnologies($limit: Int, $outstanding: Boolean) {
+    technologies(pagination: { limit: $limit }, filters: { outstanding: { eq: $outstanding } }) {
       data {
         attributes {
+          uid
           name
           primaryColor
           secondaryColor
@@ -21,4 +22,4 @@ const TECHNOLOGIES = gql`
   }
 `;
 
-export { TECHNOLOGIES };
+export { GET_TOP_TECHNOLOGIES };

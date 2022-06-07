@@ -1,12 +1,18 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
 import { FaEnvelope } from 'react-icons/fa';
 import { BsTwitter, BsGithub, BsLinkedin } from 'react-icons/bs';
 
 import { LinkedInBadge } from '../';
+import { AppContext } from '../../context/AppContext';
 import { Contact, Email, FooterContainer, Information, Socials } from './Footer.component.styles';
 
 const Footer = () => {
+  const {
+    user: { email, linkedIn, gitHub, twitter, username },
+  } = useContext(AppContext);
+  const year: number = new Date().getFullYear(); // Get current year
+
   return (
     <FooterContainer>
       <Information>
@@ -15,21 +21,23 @@ const Footer = () => {
         <LinkedInBadge />
       </Information>
       <Contact>
-        <h4>&#64; 2022 Jozek Hajduk. All rights reserved</h4>
+        <h4>
+          &#64; {year} {username}. All rights reserved
+        </h4>
         <Email>
-          <a href="">
+          <a href={`mailto:${email}`}>
             <FaEnvelope />
-            <span>hajduksanchez.dev@gmail.com</span>
+            <span>{email}</span>
           </a>
         </Email>
         <Socials>
-          <a href="https://twitter.com/HajdukJozek" target="_blank" rel="noreferrer">
+          <a href={twitter} target="_blank" rel="noreferrer">
             <BsTwitter />
           </a>
-          <a href="https://github.com/HajdukSanchez" target="_blank" rel="noreferrer">
+          <a href={gitHub} target="_blank" rel="noreferrer">
             <BsGithub />
           </a>
-          <a href="https://www.linkedin.com/in/jozek-hajduk/" target="_blank" rel="noreferrer">
+          <a href={linkedIn} target="_blank" rel="noreferrer">
             <BsLinkedin />
           </a>
         </Socials>

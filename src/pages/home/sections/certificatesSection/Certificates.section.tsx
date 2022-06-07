@@ -1,44 +1,44 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
+import { useQuery } from '@apollo/client';
 import { AiOutlinePlusCircle } from 'react-icons/ai';
 
 import { Button, CertificateCard } from '../../../../components';
-import { Certificate } from '../../../../common/interface/certificate.interface';
+import { CertificateSectionProps } from '../../home.page.interface';
+import { GET_TOP_CERTIFICATES } from '../../../../common/graphql/certificate.query';
 import { CertificateCardList, Section, SubTitle, Title } from './Certificates.section.styles';
+import { Certificate, TopCertificatesVariables } from '../../../../common/interface/certificate.interface';
 
-const CertificatesSection = () => {
-  // TODO: Limit search only for the latest 3 projects
-  const data: Certificate[] = [
-    {
-      id: 1,
-      image: 'https://source.unsplash.com/random/800x600',
-      title: 'Project 1',
-      description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco',
-    },
-    {
-      id: 2,
-      image: 'https://source.unsplash.com/random/800x600',
-      title: 'Project 2',
-      description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco',
-    },
-    {
-      id: 3,
-      image: 'https://source.unsplash.com/random/800x600',
-      title: 'Project 3',
-      description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco',
-    },
-  ];
+const CertificatesSection = ({ title, subTitle }: CertificateSectionProps) => {
+  const [certificates, setCertificates] = useState<Certificate[]>([]);
+  const { data } = useQuery<any, TopCertificatesVariables>(GET_TOP_CERTIFICATES, { variables: { limit: 3, outstanding: true } });
+
+  useEffect(() => {
+    createObject();
+  }, [data]);
+
+  const createObject = () => {
+    if (data) {
+      setCertificates([]); // Reset certificates
+      data.certificates.data.map(({ attributes }: any) => {
+        const newCertificate: Certificate = {
+          uid: attributes.uid,
+          name: attributes.name,
+          comment: attributes.comment,
+          image: `${process.env.REACT_APP_BASE_STRAPI_URL}${attributes.image.data.attributes.url}`,
+        };
+        setCertificates((prevState) => [...prevState, newCertificate]);
+      });
+    }
+  };
 
   return (
     <Section>
-      <SubTitle>Certificates</SubTitle>
-      <Title>My highlight. Reflected my learning</Title>
+      <SubTitle>{subTitle}</SubTitle>
+      <Title>{title}</Title>
       <CertificateCardList>
-        {data.map((item: Certificate) => (
-          <CertificateCard {...item} key={item.id} />
+        {certificates.map((item: Certificate, index: number) => (
+          <CertificateCard {...item} key={`${index}-${item.uid}`} />
         ))}
       </CertificateCardList>
       <Button text="View more" onClick={() => null} type={'more'} icon={<AiOutlinePlusCircle />} />
