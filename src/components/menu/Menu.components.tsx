@@ -1,6 +1,9 @@
 import React, { useContext } from 'react';
 
+import { Link } from 'react-router-dom';
+
 import { AppContext } from '../../context/AppContext';
+import { RoutesNavigation } from '../../common/enums/navigation.enum';
 import { HamburgerButton, Image, MenuContainer, MenuItem, MenuList, MenuNav } from './Menu.components.styles';
 
 /**
@@ -22,19 +25,19 @@ const Menu = () => {
     toggleMenu,
   } = useContext(AppContext);
   const menuItems: MenuOption[] = [
-    { id: 1, label: 'Home', link: '/' },
-    { id: 2, label: 'My projects', link: '/' },
-    { id: 3, label: 'Certificates', link: '/' },
-    { id: 5, label: 'About me', link: '/' },
+    { id: 1, label: 'Home', link: RoutesNavigation.Home },
+    { id: 2, label: 'My projects', link: RoutesNavigation.Projects },
+    { id: 3, label: 'Certificates', link: RoutesNavigation.Certificates },
+    { id: 5, label: 'About me', link: RoutesNavigation.AboutMe },
   ];
 
   return (
     <MenuContainer>
       <Image>
-        <a href="/">
+        <Link to={RoutesNavigation.Home}>
           <img src={logo} alt="logo" />
           <span>{username}</span>
-        </a>
+        </Link>
       </Image>
       <HamburgerButton onClick={toggleMenu} showMenu={showMenu}>
         <span />
@@ -43,7 +46,7 @@ const Menu = () => {
         <MenuList>
           {menuItems.map((item: MenuOption) => (
             <MenuItem key={item.id}>
-              <a href={item.link}>{item.label}</a>
+              <Link to={item.link}>{item.label}</Link>
             </MenuItem>
           ))}
         </MenuList>
