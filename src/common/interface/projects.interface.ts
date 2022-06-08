@@ -27,7 +27,7 @@ export interface Project {
    * @type {string}
    * @memberof Project
    */
-  shortDescription: string;
+  shortDescription?: string;
   /**
    * Picture URL of the project
    *
@@ -41,7 +41,21 @@ export interface Project {
    * @type {Tag[]}
    * @memberof Project
    */
-  tags: Tag[];
+  tags?: Tag[];
+  /**
+   * Date of the project creation or last update
+   *
+   * @type {string}
+   * @memberof Project
+   */
+  date?: string;
+  /**
+   * Link to the project repository
+   *
+   * @type {string}
+   * @memberof Project
+   */
+  githubUrl?: string;
 }
 
 /**

@@ -5,5 +5,6 @@ export { Layout } from './layout/Layout.component';
 export { Button } from './button/Button.component';
 export { ProjectCard } from './projectCard/ProjectCard.component';
 export { LinkedInBadge } from './linkedInBadge/LinkedInBadge.component';
-export { CertificateCard } from './certificateCard/CertificateCard.component';
 export { TechnologyImage } from './technologyImage/TechnologyImag.component';
+export { CertificateCard } from './certificateCard/CertificateCard.component';
+export { ProjectBookmark } from './projectBookmark/ProjectBookmark.component';

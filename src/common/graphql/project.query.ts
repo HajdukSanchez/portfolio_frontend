@@ -28,4 +28,27 @@ const GET_TOP_PROJECTS = gql`
   }
 `;
 
-export { GET_TOP_PROJECTS };
+const GET_ALL_PROJECTS = gql`
+  query GetAllProjects {
+    projects(sort: "date:desc") {
+      data {
+        attributes {
+          date
+          uid
+          name
+          shortDescription
+          githubUrl
+          cover {
+            data {
+              attributes {
+                url
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`;
+
+export { GET_TOP_PROJECTS, GET_ALL_PROJECTS };

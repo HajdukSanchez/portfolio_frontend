@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import { AppContext } from '../../context/AppContext';
 import { RoutesNavigation } from '../../common/enums/navigation.enum';
@@ -19,6 +19,7 @@ interface MenuOption {
 
 const Menu = () => {
   const logo = require('../../common/assets/images/logo.png'); // Personal logo import
+  const navigation = useNavigate();
   const {
     showMenu,
     user: { username },
@@ -30,6 +31,11 @@ const Menu = () => {
     { id: 3, label: 'Certificates', link: RoutesNavigation.Certificates },
     { id: 5, label: 'About me', link: RoutesNavigation.AboutMe },
   ];
+
+  const handleNavigation = (link: string) => {
+    navigation(link);
+    toggleMenu();
+  };
 
   return (
     <MenuContainer>
@@ -46,7 +52,7 @@ const Menu = () => {
         <MenuList>
           {menuItems.map((item: MenuOption) => (
             <MenuItem key={item.id}>
-              <Link to={item.link}>{item.label}</Link>
+              <a onClick={() => handleNavigation(item.link)}>{item.label}</a>
             </MenuItem>
           ))}
         </MenuList>

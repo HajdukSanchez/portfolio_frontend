@@ -1,7 +1,93 @@
-import React from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+
+import { Timeline } from '@mantine/core';
+import { useQuery } from '@apollo/client';
+import { RiGithubLine } from 'react-icons/ri';
+
+import { AppContext } from '../../context/AppContext';
+import { Button, ProjectBookmark } from '../../components';
+import { monthDifference } from '../../helpers/date.helper';
+import { ProjectsPageData } from './projects.page.interface';
+import { TransparentContainer } from '../home/Home.page.styles';
+import { PROJECTS_PAGE } from '../../common/graphql/pages.query';
+import { Project } from '../../common/interface/projects.interface';
+import { GET_ALL_PROJECTS } from '../../common/graphql/project.query';
+import { Container, Description, TimeLineContainer, Title } from './Projects.page.styles';
 
 const ProjectsPage = () => {
-  return <div>Projects.page</div>;
+  const [projects, setProjects] = useState<Project[]>([]);
+  const [information, setInformation] = useState<ProjectsPageData>({} as ProjectsPageData);
+  const { data } = useQuery(GET_ALL_PROJECTS);
+  const { data: info } = useQuery(PROJECTS_PAGE);
+  const {
+    user: { gitHub },
+  } = useContext(AppContext);
+
+  useEffect(() => {
+    createObject();
+  }, [data]);
+
+  useEffect(() => {
+    getPageData();
+  }, [info]);
+
+  const getPageData = () => {
+    if (info) {
+      const pageData: ProjectsPageData = info.projectsPage.data.attributes.header;
+      setInformation(pageData);
+    }
+  };
+
+  const createObject = () => {
+    if (data) {
+      setProjects([]); // Reset projects
+      data.projects.data.map(({ attributes }: any) => {
+        const newProject: Project = {
+          uid: attributes.uid,
+          name: attributes.name,
+          date: attributes.date,
+          githubUrl: attributes.githubUrl,
+          shortDescription: attributes.shortDescription,
+          cover: `${process.env.REACT_APP_BASE_STRAPI_URL}${attributes.cover.data.attributes.url}`,
+        };
+        setProjects((prevState) => [...prevState, newProject]);
+      });
+    }
+  };
+
+  const handleButtonClick = () => {
+    window.open(gitHub, '_blank');
+  };
+
+  return (
+    <Container>
+      <Title>{information.title}</Title>
+      <Description>{information.description}</Description>
+      <Button text={information.buttonText} onClick={handleButtonClick} icon={<RiGithubLine />} type={'linkedIn'} />
+      <TimeLineContainer>
+        <Timeline active={1} bulletSize={20} lineWidth={3} color={'cyan'}>
+          {projects.map((project: Project, index: number) => {
+            const monthDiff: number = monthDifference(project.date!, new Date().toDateString());
+            const monthDiffText: string = monthDiff < 1 ? 'This month' : `${monthDiff} months ago`;
+            return (
+              <Timeline.Item
+                title={
+                  <h6>
+                    {project.date!}
+                    <span> - {monthDiffText}</span>
+                  </h6>
+                }
+                key={`${index}-${project.uid}`}
+                color={'cyan'}>
+                <ProjectBookmark {...project} />
+              </Timeline.Item>
+            );
+          })}
+        </Timeline>
+      </TimeLineContainer>
+      <TransparentContainer />
+    </Container>
+  );
 };
 
 export { ProjectsPage };

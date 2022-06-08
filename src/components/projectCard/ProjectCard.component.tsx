@@ -22,11 +22,7 @@ const ProjectCard = ({ cover, tags, name, shortDescription, uid }: Project) => {
       <Image>
         <img src={cover} alt={name} />
       </Image>
-      <Tags>
-        {tags.map((tag: Tag, index: number) => (
-          <span key={`${index}-${tag.name}`}>#{name}</span>
-        ))}
-      </Tags>
+      <Tags>{tags && tags?.map((tag: Tag, index: number) => <span key={`${index}-${tag.name}`}>#{name}</span>)}</Tags>
       <Information>
         <h2>{name}</h2>
         <p>{shortDescription}</p>
