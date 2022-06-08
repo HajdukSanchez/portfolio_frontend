@@ -15,4 +15,16 @@ const HOME_PAGE = gql`
   }
 `;
 
-export { HOME_PAGE };
+const PROJECTS_PAGE = gql`
+  query GetProjectsPageInformation {
+    projectsPage {
+      data {
+        attributes {
+          header
+        }
+      }
+    }
+  }
+`;
+
+export { HOME_PAGE, PROJECTS_PAGE };

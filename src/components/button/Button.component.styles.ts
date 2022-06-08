@@ -69,8 +69,8 @@ const ButtonContainer = styled.div<{ type: ButtonType; withIcon: boolean }>`
       background-color: transparent;
       box-shadow: ${globalStylesVariables.boxShadow};
     `}
-
-  ${({ type }) =>
+			
+			${({ type }) =>
     type === 'more' &&
     css`
       padding: 0.8rem 8rem;
@@ -81,8 +81,8 @@ const ButtonContainer = styled.div<{ type: ButtonType; withIcon: boolean }>`
         border-color: transparent;
       }
     `}
-
-  ${({ type }) =>
+			
+			${({ type }) =>
     type === 'link' &&
     css`
       padding: 1rem 0;
@@ -97,6 +97,34 @@ const ButtonContainer = styled.div<{ type: ButtonType; withIcon: boolean }>`
       &:hover {
         background-color: transparent;
         border-bottom-color: ${globalStylesVariables.colors.alternative};
+
+        & > span {
+          color: ${globalStylesVariables.textColors.primary};
+        }
+
+        & > svg {
+          color: ${globalStylesVariables.textColors.primary};
+        }
+      }
+    `}
+
+		${({ type }) =>
+    type === 'linkedIn' &&
+    css`
+      padding: 1rem 2.5rem;
+      background-color: ${globalStylesVariables.textColors.tertiary};
+      color: ${globalStylesVariables.textColors.primary};
+
+      & > span {
+        color: ${globalStylesVariables.textColors.primary};
+      }
+
+      & > svg {
+        color: ${globalStylesVariables.textColors.primary};
+      }
+
+      &:hover {
+        background-color: ${globalStylesVariables.textColors.tertiary};
 
         & > span {
           color: ${globalStylesVariables.textColors.primary};

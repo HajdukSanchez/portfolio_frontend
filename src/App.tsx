@@ -1,7 +1,6 @@
 import React, { ReactNode } from 'react';
 
-import { HomePage } from './pages';
-import { Layout } from './components';
+import { Navigation } from './navigation/Navigation';
 import { AppContextProvider } from './context/AppContext';
 
 interface AppStateProps {
@@ -11,9 +10,7 @@ interface AppStateProps {
 const App = () => {
   return (
     <_AppState>
-      <Layout>
-        <HomePage />
-      </Layout>
+      <Navigation />
     </_AppState>
   );
 };
