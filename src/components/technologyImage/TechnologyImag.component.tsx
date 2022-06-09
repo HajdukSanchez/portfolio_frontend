@@ -1,13 +1,18 @@
 import React from 'react';
 
-import { Image, TechnologyContainer, Text } from './TechnologyImage.component.styles';
+import { getImageURL } from '../../helpers/image.helper';
 import { Technology } from '../../common/interface/technology.interface';
+import { Image, TechnologyContainer, Text } from './TechnologyImage.component.styles';
 
-const TechnologyImage = ({ image, name, primaryColor }: Technology) => {
+interface TechnologyImageProps {
+  technology: Technology;
+}
+
+const TechnologyImage = ({ technology: { image, name, primaryColor } }: TechnologyImageProps) => {
   return (
     <TechnologyContainer>
       <Image>
-        <img src={`${image}`} alt={name} />
+        <img src={getImageURL(image.data.attributes.url)} alt={name} />
       </Image>
       <Text style={{ color: primaryColor }}>{name.toLocaleUpperCase()}</Text>
     </TechnologyContainer>

@@ -5,6 +5,8 @@ import { AiOutlinePlusCircle } from 'react-icons/ai';
 
 import { Button, CertificateCard } from '../../../../components';
 import { CertificateSectionProps } from '../../home.page.interface';
+import { useNavigationPages } from '../../../../hooks/useNavigationPages';
+import { RoutesNavigation } from '../../../../common/enums/navigation.enum';
 import { GET_TOP_CERTIFICATES } from '../../../../common/graphql/certificate.query';
 import { CertificateCardList, Section, SubTitle, Title } from './Certificates.section.styles';
 import { Certificate, TopCertificatesVariables } from '../../../../common/interface/certificate.interface';
@@ -12,6 +14,7 @@ import { Certificate, TopCertificatesVariables } from '../../../../common/interf
 const CertificatesSection = ({ title, subTitle }: CertificateSectionProps) => {
   const [certificates, setCertificates] = useState<Certificate[]>([]);
   const { data } = useQuery<any, TopCertificatesVariables>(GET_TOP_CERTIFICATES, { variables: { limit: 3, outstanding: true } });
+  const { makeNavigation } = useNavigationPages();
 
   useEffect(() => {
     createObject();
@@ -20,12 +23,13 @@ const CertificatesSection = ({ title, subTitle }: CertificateSectionProps) => {
   const createObject = () => {
     if (data) {
       setCertificates([]); // Reset certificates
-      data.certificates.data.map(({ attributes }: any) => {
+      data.certificates.data.map(({ attributes, id }: any) => {
         const newCertificate: Certificate = {
-          uid: attributes.uid,
+          id: id,
           name: attributes.name,
           comment: attributes.comment,
-          image: `${process.env.REACT_APP_BASE_STRAPI_URL}${attributes.image.data.attributes.url}`,
+          image: attributes.image,
+          badgePicture: attributes.badgePicture,
         };
         setCertificates((prevState) => [...prevState, newCertificate]);
       });
@@ -38,10 +42,10 @@ const CertificatesSection = ({ title, subTitle }: CertificateSectionProps) => {
       <Title>{title}</Title>
       <CertificateCardList>
         {certificates.map((item: Certificate, index: number) => (
-          <CertificateCard {...item} key={`${index}-${item.uid}`} />
+          <CertificateCard certificate={item} key={`${index}-${item.id}`} />
         ))}
       </CertificateCardList>
-      <Button text="View more" onClick={() => null} type={'more'} icon={<AiOutlinePlusCircle />} />
+      <Button text="View more" onClick={() => makeNavigation(RoutesNavigation.Certificates)} type={'more'} icon={<AiOutlinePlusCircle />} />
     </Section>
   );
 };

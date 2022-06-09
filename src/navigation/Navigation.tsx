@@ -14,9 +14,9 @@ const Navigation = () => {
           <Route path={RoutesNavigation.Home} element={<HomePage />} />
           <Route path={RoutesNavigation.AboutMe} element={<AboutMePage />} />
           <Route path={RoutesNavigation.Projects} element={<ProjectsPage />} />
-          <Route path={`${RoutesNavigation.Project}/:uid`} element={<ProjectPage />} />
+          <Route path={`${RoutesNavigation.Project}/:id`} element={<ProjectPage />} />
           <Route path={RoutesNavigation.Certificates} element={<CertificatesPage />} />
-          <Route path={`${RoutesNavigation.Certificate}/:uid`} element={<CertificatePage />} />
+          <Route path={`${RoutesNavigation.Certificate}/:id`} element={<CertificatePage />} />
         </Routes>
       </Layout>
     </Router>

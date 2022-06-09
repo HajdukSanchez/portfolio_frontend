@@ -4,8 +4,8 @@ const GET_TOP_PROJECTS = gql`
   query GetTopProjects($limit: Int, $outstanding: Boolean) {
     projects(pagination: { limit: $limit }, filters: { outstanding: { eq: $outstanding } }) {
       data {
+				id
         attributes {
-          uid
           name
           shortDescription
           cover {
@@ -32,9 +32,9 @@ const GET_ALL_PROJECTS = gql`
   query GetAllProjects {
     projects(sort: "date:desc") {
       data {
+				id
         attributes {
           date
-          uid
           name
           shortDescription
           githubUrl

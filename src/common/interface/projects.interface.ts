@@ -1,4 +1,5 @@
 import { TopCertificatesVariables } from './certificate.interface';
+import { Image } from './image.interface';
 
 /**
  * Data model for projects shown in the Home page
@@ -13,7 +14,7 @@ export interface Project {
    * @type {string}
    * @memberof Project
    */
-  uid: string;
+  id: string;
   /**
    * Name of the project
    *
@@ -31,10 +32,10 @@ export interface Project {
   /**
    * Picture URL of the project
    *
-   * @type {string}
+   * @type {Image}
    * @memberof Project
    */
-  cover: string;
+  cover: Image;
   /**
    * Array of tags of the project
    *

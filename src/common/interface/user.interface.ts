@@ -1,3 +1,5 @@
+import { Image } from "./image.interface";
+
 /**
  * Data model for the user.
  *
@@ -78,10 +80,10 @@ export interface User {
   /**
    * User avatar
    *
-   * @type {string}
+   * @type {Image}
    * @memberof User
    */
-  picture?: string;
+  picture?: Image;
   /**
    * User CV link
    *

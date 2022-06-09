@@ -41,14 +41,14 @@ const ProjectsPage = () => {
   const createObject = () => {
     if (data) {
       setProjects([]); // Reset projects
-      data.projects.data.map(({ attributes }: any) => {
+      data.projects.data.map(({ attributes, id }: any) => {
         const newProject: Project = {
-          uid: attributes.uid,
+          id: id,
           name: attributes.name,
           date: attributes.date,
           githubUrl: attributes.githubUrl,
           shortDescription: attributes.shortDescription,
-          cover: `${process.env.REACT_APP_BASE_STRAPI_URL}${attributes.cover.data.attributes.url}`,
+          cover: attributes.cover,
         };
         setProjects((prevState) => [...prevState, newProject]);
       });
@@ -77,9 +77,9 @@ const ProjectsPage = () => {
                     <span> - {monthDiffText}</span>
                   </h6>
                 }
-                key={`${index}-${project.uid}`}
+                key={`${index}-${project.id}`}
                 color={'cyan'}>
-                <ProjectBookmark {...project} />
+                <ProjectBookmark project={project} />
               </Timeline.Item>
             );
           })}

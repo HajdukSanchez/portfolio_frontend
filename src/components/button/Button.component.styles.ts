@@ -69,7 +69,7 @@ const ButtonContainer = styled.div<{ type: ButtonType; withIcon: boolean }>`
       background-color: transparent;
       box-shadow: ${globalStylesVariables.boxShadow};
     `}
-			
+
 			${({ type }) =>
     type === 'more' &&
     css`
@@ -81,7 +81,7 @@ const ButtonContainer = styled.div<{ type: ButtonType; withIcon: boolean }>`
         border-color: transparent;
       }
     `}
-			
+
 			${({ type }) =>
     type === 'link' &&
     css`
@@ -125,6 +125,7 @@ const ButtonContainer = styled.div<{ type: ButtonType; withIcon: boolean }>`
 
       &:hover {
         background-color: ${globalStylesVariables.textColors.tertiary};
+        box-shadow: ${globalStylesVariables.boxShadow};
 
         & > span {
           color: ${globalStylesVariables.textColors.primary};

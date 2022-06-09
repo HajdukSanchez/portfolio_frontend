@@ -1,26 +1,30 @@
 import React from 'react';
 
-import { useNavigate } from 'react-router-dom';
 import { RoutesNavigation } from '../../common/enums/navigation.enum';
 
+import { getImageURL } from '../../helpers/image.helper';
+import { useNavigationPages } from '../../hooks/useNavigationPages';
 import { Certificate } from '../../common/interface/certificate.interface';
-import { Card, Description, Image, Information, Title } from './CertificateCard.component.styles';
+import { Badge, Card, Image, Information, Title } from './CertificateCard.component.styles';
 
-const CertificateCard = ({ image, name, comment, uid }: Certificate) => {
-  const navigate = useNavigate();
+interface CertificateCardProps {
+  certificate: Certificate;
+}
 
-  const handleNavigation = () => {
-    navigate(`${RoutesNavigation.Certificate}/${uid}`);
-  };
+const CertificateCard = ({ certificate: { image, name, id, badgePicture, date } }: CertificateCardProps) => {
+  const { makeNavigation } = useNavigationPages();
 
   return (
-    <Card onClick={handleNavigation}>
+    <Card onClick={() => makeNavigation(`${RoutesNavigation.Certificate}/${id}`)}>
+      <Badge>
+        <img src={getImageURL(badgePicture!.data.attributes.url)} alt={`badgePicture-${name}`} />
+      </Badge>
       <Image>
-        <img src={image} alt={name} />
+        <img src={getImageURL(image.data.attributes.url)} alt={name} />
       </Image>
       <Information>
+        {date && <h5>{date}</h5>}
         <Title>{name}</Title>
-        <Description>{comment}</Description>
       </Information>
     </Card>
   );
