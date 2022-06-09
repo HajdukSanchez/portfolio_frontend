@@ -5,6 +5,8 @@ import { HiOutlineViewGridAdd } from 'react-icons/hi';
 
 import { Button, ProjectCard } from '../../../../components';
 import { ProjectSectionProps } from '../../home.page.interface';
+import { useNavigationPages } from '../../../../hooks/useNavigationPages';
+import { RoutesNavigation } from '../../../../common/enums/navigation.enum';
 import { GET_TOP_PROJECTS } from '../../../../common/graphql/project.query';
 import { ProjectsColumn, ProjectsList, Section, Titles } from './Projects.section.styles';
 import { Project, Tag, TopProjectsVariables } from '../../../../common/interface/projects.interface';
@@ -34,6 +36,7 @@ interface ProjectsState {
 const ProjectsSection = ({ title, subTitle }: ProjectSectionProps) => {
   const [projects, setProjects] = useState<ProjectsState>({ columnOne: [], columnTwo: [] });
   const { data } = useQuery<any, TopProjectsVariables>(GET_TOP_PROJECTS, { variables: { limit: 6, outstanding: true } });
+  const { makeNavigation } = useNavigationPages();
 
   useEffect(() => {
     setProjects({ columnOne: [], columnTwo: [] }); // Reset projects
@@ -42,7 +45,7 @@ const ProjectsSection = ({ title, subTitle }: ProjectSectionProps) => {
 
   const createObject = () => {
     if (data) {
-      data.projects.data.map(({ attributes }: any, index: number) => {
+      data.projects.data.map(({ attributes, id }: any, index: number) => {
         const tags: Tag[] = []; // Tags for the project
         attributes.tags.data.forEach((item: any) => {
           tags.push({
@@ -52,10 +55,10 @@ const ProjectsSection = ({ title, subTitle }: ProjectSectionProps) => {
 
         const newProject: Project = {
           tags: tags,
-          uid: attributes.uid,
+          id: id,
           name: attributes.name,
           shortDescription: attributes.shortDescription,
-          cover: `${process.env.REACT_APP_BASE_STRAPI_URL}${attributes.cover.data.attributes.url}`,
+          cover: attributes.cover,
         };
 
         // One project per column in each iteration
@@ -83,14 +86,14 @@ const ProjectsSection = ({ title, subTitle }: ProjectSectionProps) => {
       <ProjectsList>
         <ProjectsColumn>
           {projects.columnOne.length > 0 &&
-            projects.columnOne.map((project: Project, index: number) => <ProjectCard key={`${index}-${project.uid}`} {...project} />)}
+            projects.columnOne.map((project: Project, index: number) => <ProjectCard key={`${index}-${project.id}`} project={project} />)}
         </ProjectsColumn>
         <ProjectsColumn>
           {projects.columnTwo.length > 0 &&
-            projects.columnTwo.map((project: Project, index: number) => <ProjectCard key={`${index}-${project.uid}`} {...project} />)}
+            projects.columnTwo.map((project: Project, index: number) => <ProjectCard key={`${index}-${project.id}`} project={project} />)}
         </ProjectsColumn>
       </ProjectsList>
-      <Button text="View more" onClick={() => null} type={'more'} icon={<HiOutlineViewGridAdd />} />
+      <Button text="View more" onClick={() => makeNavigation(RoutesNavigation.Projects)} type={'more'} icon={<HiOutlineViewGridAdd />} />
     </Section>
   );
 };

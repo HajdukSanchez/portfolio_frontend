@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { globalStylesVariables, mediaQueries } from '../../common/style/styles';
 
 const Card = styled.article`
+  position: relative;
   margin: 0 4rem 0 0;
   width: 70%;
   min-width: 25rem;
@@ -23,6 +24,19 @@ const Card = styled.article`
   }
 `;
 
+const Badge = styled.div`
+  position: absolute;
+  right: 0.5rem;
+  top: 0.5rem;
+  width: 5rem;
+  height: 5rem;
+  border-radius: 50%;
+
+  & > img {
+    border-radius: inherit;
+  }
+`;
+
 const Image = styled.div`
   width: 100%;
   border-radius: ${globalStylesVariables.borderRadius};
@@ -39,18 +53,19 @@ const Information = styled.div`
   padding: 1rem 2rem;
   height: 30%;
   text-align: center;
+
+  & > h5 {
+    padding-bottom: 0.5rem;
+    font-size: ${globalStylesVariables.textSize.extraSmall};
+    color: ${globalStylesVariables.textColors.secondary};
+  }
 `;
 
 const Title = styled.h4`
   padding-bottom: 1rem;
   font-size: ${globalStylesVariables.textSize.medium};
   color: ${globalStylesVariables.textColors.primary};
+  text-transform: capitalize;
 `;
 
-const Description = styled.h3`
-  font-size: ${globalStylesVariables.textSize.small};
-  color: ${globalStylesVariables.textColors.secondary};
-  font-weight: normal;
-`;
-
-export { Card, Image, Information, Title, Description };
+export { Card, Badge, Image, Information, Title };

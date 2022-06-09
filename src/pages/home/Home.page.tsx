@@ -2,13 +2,10 @@ import React, { useEffect, useState } from 'react';
 
 import { useQuery } from '@apollo/client';
 
+import { HOME_PAGE } from '../../common/graphql';
 import { HomePageSectionsData } from './home.page.interface';
-import { HOME_PAGE } from '../../common/graphql/pages.query';
-import { HomeSection } from './sections/homeSection/Home.section';
 import { Container, TransparentContainer } from './Home.page.styles';
-import { ProjectsSection } from './sections/projectsSection/Projects.section';
-import { CertificatesSection } from './sections/certificatesSection/Certificates.section';
-import { TechnologiesSection } from './sections/technologiesSection/Technologies.section';
+import { HomeSection, ProjectsSection, CertificatesSection, TechnologiesSection } from './sections/';
 
 const HomePage = () => {
   const [information, setInformation] = useState<HomePageSectionsData>({} as HomePageSectionsData);
@@ -31,7 +28,7 @@ const HomePage = () => {
       <TechnologiesSection {...information.technologies} />
       <CertificatesSection {...information.certificates} />
       <ProjectsSection {...information.projects} />
-			<TransparentContainer />
+      <TransparentContainer />
     </Container>
   );
 };

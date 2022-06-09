@@ -4,14 +4,14 @@ import { Timeline } from '@mantine/core';
 import { useQuery } from '@apollo/client';
 import { RiGithubLine } from 'react-icons/ri';
 
+import { monthDifference } from '../../helpers';
+import { Project } from '../../common/interface';
+import { PROJECTS_PAGE } from '../../common/graphql';
 import { AppContext } from '../../context/AppContext';
+import { GET_ALL_PROJECTS } from '../../common/graphql';
 import { Button, ProjectBookmark } from '../../components';
-import { monthDifference } from '../../helpers/date.helper';
 import { ProjectsPageData } from './projects.page.interface';
 import { TransparentContainer } from '../home/Home.page.styles';
-import { PROJECTS_PAGE } from '../../common/graphql/pages.query';
-import { Project } from '../../common/interface/projects.interface';
-import { GET_ALL_PROJECTS } from '../../common/graphql/project.query';
 import { Container, Description, TimeLineContainer, Title } from './Projects.page.styles';
 
 const ProjectsPage = () => {
@@ -41,14 +41,14 @@ const ProjectsPage = () => {
   const createObject = () => {
     if (data) {
       setProjects([]); // Reset projects
-      data.projects.data.map(({ attributes }: any) => {
+      data.projects.data.map(({ attributes, id }: any) => {
         const newProject: Project = {
-          uid: attributes.uid,
+          id: id,
           name: attributes.name,
           date: attributes.date,
           githubUrl: attributes.githubUrl,
           shortDescription: attributes.shortDescription,
-          cover: `${process.env.REACT_APP_BASE_STRAPI_URL}${attributes.cover.data.attributes.url}`,
+          cover: attributes.cover,
         };
         setProjects((prevState) => [...prevState, newProject]);
       });
@@ -77,9 +77,9 @@ const ProjectsPage = () => {
                     <span> - {monthDiffText}</span>
                   </h6>
                 }
-                key={`${index}-${project.uid}`}
+                key={`${index}-${project.id}`}
                 color={'cyan'}>
-                <ProjectBookmark {...project} />
+                <ProjectBookmark project={project} />
               </Timeline.Item>
             );
           })}

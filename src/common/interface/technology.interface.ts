@@ -1,4 +1,5 @@
 import { TopCertificatesVariables } from './certificate.interface';
+import { Image } from './image.interface';
 
 /**
  * Data model for Technology
@@ -13,7 +14,7 @@ export interface Technology {
    * @type {string}
    * @memberof Technology
    */
-  uid: string;
+  id: string;
   /**
    * Name of the technology
    *
@@ -41,10 +42,10 @@ export interface Technology {
    * Picture URL of the technology
    * Used for the image of the technology card
    *
-   * @type {string}
+   * @type {Image}
    * @memberof Technology
    */
-  image: string;
+  image: Image;
 }
 
 /**

@@ -1,13 +1,13 @@
 import React, { ReactNode } from 'react';
 
+import { ButtonType } from '../../common/interface/';
 import { ButtonContainer } from './Button.component.styles';
-import { ButtonType } from '../../common/interface/button.interface';
 
 interface ButtonProps {
   text: string;
-  type?: ButtonType;
-  icon?: ReactNode;
   onClick: () => void;
+  icon?: ReactNode;
+  type?: ButtonType;
 }
 
 const Button = ({ text, type = 'normal', icon = null, onClick }: ButtonProps) => {

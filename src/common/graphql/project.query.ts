@@ -4,8 +4,8 @@ const GET_TOP_PROJECTS = gql`
   query GetTopProjects($limit: Int, $outstanding: Boolean) {
     projects(pagination: { limit: $limit }, filters: { outstanding: { eq: $outstanding } }) {
       data {
+        id
         attributes {
-          uid
           name
           shortDescription
           cover {
@@ -32,9 +32,9 @@ const GET_ALL_PROJECTS = gql`
   query GetAllProjects {
     projects(sort: "date:desc") {
       data {
+        id
         attributes {
           date
-          uid
           name
           shortDescription
           githubUrl
@@ -51,4 +51,44 @@ const GET_ALL_PROJECTS = gql`
   }
 `;
 
-export { GET_TOP_PROJECTS, GET_ALL_PROJECTS };
+const GET_PROJECT_BY_ID = gql`
+  query GetProjectByID($id: ID!) {
+    project(id: $id) {
+      data {
+        attributes {
+          name
+          description
+          githubUrl
+          projectPageUrl
+          outstanding
+          date
+          technologies {
+            data {
+              attributes {
+                name
+                primaryColor
+                secondaryColor
+              }
+            }
+          }
+          tags {
+            data {
+              attributes {
+                name
+              }
+            }
+          }
+          cover {
+            data {
+              attributes {
+                url
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`;
+
+export { GET_TOP_PROJECTS, GET_ALL_PROJECTS, GET_PROJECT_BY_ID };

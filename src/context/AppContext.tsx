@@ -36,7 +36,7 @@ const AppContextProvider = ({ children }: AppContextProviderProps) => {
         about: dataUser.about,
         cellphone: dataUser.cellphone,
         cv: `${process.env.REACT_APP_BASE_STRAPI_URL}${dataUser.cv.data[0]?.attributes.url}`,
-        picture: dataUser.picture.data ? `${process.env.REACT_APP_BASE_STRAPI_URL}${dataUser.picture.data?.attributes.url}` : '',
+        picture: dataUser.picture.data ? dataUser.picture : '',
       };
       setUser(newUser);
     }
