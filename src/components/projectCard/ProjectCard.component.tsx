@@ -2,13 +2,13 @@ import React, { useContext } from 'react';
 
 import { BsArrowRight } from 'react-icons/bs';
 
-import { Button } from '../';
+import { Button, Tags } from '../';
+import { getImageURL } from '../../helpers';
+import { Project, Tag } from '../../common/interface';
 import { AppContext } from '../../context/AppContext';
-import { getImageURL } from '../../helpers/image.helper';
 import { useNavigationPages } from '../../hooks/useNavigationPages';
 import { RoutesNavigation } from '../../common/enums/navigation.enum';
-import { Project, Tag } from '../../common/interface/projects.interface';
-import { ButtonContainer, Card, Image, Information, Tags } from './ProjectCard.component.styles';
+import { ButtonContainer, Card, Image, Information } from './ProjectCard.component.styles';
 
 interface ProjectCardProps {
   project: Project;
@@ -23,7 +23,7 @@ const ProjectCard = ({ project: { cover, tags, name, shortDescription, id } }: P
       <Image>
         <img src={getImageURL(cover.data.attributes.url)} alt={name} />
       </Image>
-      <Tags>{tags && tags?.map((tag: Tag, index: number) => <span key={`${index}-${tag.name}`}>#{name}</span>)}</Tags>
+      <Tags tags={tags} />
       <Information>
         <h2>{name}</h2>
         <p>{shortDescription}</p>

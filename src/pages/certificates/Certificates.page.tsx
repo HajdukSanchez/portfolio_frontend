@@ -3,11 +3,10 @@ import React, { useEffect, useState } from 'react';
 import { useQuery } from '@apollo/client';
 
 import { CertificateCard } from '../../components';
+import { Certificate } from '../../common/interface';
 import { TransparentContainer } from '../home/Home.page.styles';
 import { CertificatesPageData } from './Certificates.page.interface';
-import { CERTIFICATES_PAGE } from '../../common/graphql/pages.query';
-import { Certificate } from '../../common/interface/certificate.interface';
-import { GET_ALL_CERTIFICATES } from '../../common/graphql/certificate.query';
+import { GET_ALL_CERTIFICATES, CERTIFICATES_PAGE } from '../../common/graphql';
 import { CertificatesContainer, Container, Description, Title } from './Certificates.page.styles';
 
 const CertificatesPage = () => {

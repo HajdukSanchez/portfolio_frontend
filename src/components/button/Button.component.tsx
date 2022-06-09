@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react';
 
+import { ButtonType } from '../../common/interface/';
 import { ButtonContainer } from './Button.component.styles';
-import { ButtonType } from '../../common/interface/button.interface';
 
 interface ButtonProps {
   text: string;

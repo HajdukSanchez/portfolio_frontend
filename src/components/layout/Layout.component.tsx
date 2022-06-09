@@ -1,8 +1,6 @@
 import React, { ReactNode } from 'react';
 
 import { Menu, Footer } from '../';
-import { TransparentContainer } from '../../pages/home/Home.page.styles';
-
 interface LayoutProps {
   children?: ReactNode | ReactNode[];
 }

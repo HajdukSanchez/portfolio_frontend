@@ -2,9 +2,9 @@ import React from 'react';
 
 import { RoutesNavigation } from '../../common/enums/navigation.enum';
 
-import { getImageURL } from '../../helpers/image.helper';
+import { getImageURL } from '../../helpers';
+import { Certificate } from '../../common/interface';
 import { useNavigationPages } from '../../hooks/useNavigationPages';
-import { Certificate } from '../../common/interface/certificate.interface';
 import { Badge, Card, Image, Information, Title } from './CertificateCard.component.styles';
 
 interface CertificateCardProps {

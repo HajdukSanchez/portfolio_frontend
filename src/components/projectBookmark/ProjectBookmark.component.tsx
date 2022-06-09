@@ -3,8 +3,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { BsGithub, BsBoxArrowUpRight } from 'react-icons/bs';
 
-import { getImageURL } from '../../helpers/image.helper';
-import { Project } from '../../common/interface/projects.interface';
+import { getImageURL } from '../../helpers';
+import { Project } from '../../common/interface';
 import { RoutesNavigation } from '../../common/enums/navigation.enum';
 import { Actions, Container, Image, Information } from './ProjectBookmark.component.style';
 

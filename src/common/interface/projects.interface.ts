@@ -1,5 +1,6 @@
-import { TopCertificatesVariables } from './certificate.interface';
+import { CertificateByIDVariables, TopCertificatesVariables } from './certificate.interface';
 import { Image } from './image.interface';
+import { Technology } from './technology.interface';
 
 /**
  * Data model for projects shown in the Home page
@@ -23,19 +24,19 @@ export interface Project {
    */
   name: string;
   /**
-   * Description of the project
-   *
-   * @type {string}
-   * @memberof Project
-   */
-  shortDescription?: string;
-  /**
    * Picture URL of the project
    *
    * @type {Image}
    * @memberof Project
    */
   cover: Image;
+  /**
+   * Description of the project
+   *
+   * @type {string}
+   * @memberof Project
+   */
+  shortDescription?: string;
   /**
    * Array of tags of the project
    *
@@ -57,6 +58,34 @@ export interface Project {
    * @memberof Project
    */
   githubUrl?: string;
+  /**
+   * Complete description of the project
+   *
+   * @type {string}
+   * @memberof Project
+   */
+  description?: string;
+  /**
+   * Link to the project page
+   *
+   * @type {string}
+   * @memberof Project
+   */
+  projectPageUrl?: string;
+  /**
+   * Flag indicating if the project is outstanding
+   *
+   * @type {boolean}
+   * @memberof Project
+   */
+  outstanding?: boolean;
+  /**
+   * Array of technologies used in the project
+   *
+   * @type {Technology[]}
+   * @memberof Project
+   */
+  technologies?: Technology[];
 }
 
 /**
@@ -78,7 +107,16 @@ export interface Tag {
 /**
  * Data model for variables used in the GET_TOP_PROJECTS query
  *
- * @export interface
+ * @export Interface
  * @interface TopTechnologiesVariables
  */
 export interface TopProjectsVariables extends TopCertificatesVariables {}
+
+/**
+ * Data model for variables used in the GET_PROJECT_BY_ID query
+ *
+ * @export Interface
+ * @interface ProjectByIDVariables
+ * @extends {CertificateByIDVariables}
+ */
+export interface ProjectByIDVariables extends CertificateByIDVariables {}

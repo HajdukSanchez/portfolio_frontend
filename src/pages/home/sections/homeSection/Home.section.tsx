@@ -4,6 +4,7 @@ import { HiDownload } from 'react-icons/hi';
 
 import { Arrow, Button } from '../../../../components';
 import { AppContext } from '../../../../context/AppContext';
+import { navigateOutside } from '../../../../helpers/navigation.helper';
 import { HomeSectionProps } from '../../home.page.interface';
 import { ButtonContainer, Description, Section, Title } from './Home.section.styles';
 
@@ -13,11 +14,6 @@ const HomeSection = ({ description }: HomeSectionProps) => {
     user: { username, profession, cv },
   } = useContext(AppContext);
 
-  // Open in new tab the cv
-  const handleCV = () => {
-    window.open(cv, '_blank');
-  };
-
   return (
     <Section isVisible={!showMenu}>
       <Title>
@@ -26,7 +22,7 @@ const HomeSection = ({ description }: HomeSectionProps) => {
       <Description>{description}</Description>
       <ButtonContainer>
         <Button text="See my work" onClick={() => null} type={'active'} />
-        <Button text="Download CV" onClick={handleCV} icon={<HiDownload />} />
+        <Button text="Download CV" onClick={() => navigateOutside(cv ?? '')} icon={<HiDownload />} />
       </ButtonContainer>
       <Arrow />
     </Section>

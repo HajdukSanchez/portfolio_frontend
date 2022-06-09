@@ -4,14 +4,14 @@ import { Timeline } from '@mantine/core';
 import { useQuery } from '@apollo/client';
 import { RiGithubLine } from 'react-icons/ri';
 
+import { monthDifference } from '../../helpers';
+import { Project } from '../../common/interface';
+import { PROJECTS_PAGE } from '../../common/graphql';
 import { AppContext } from '../../context/AppContext';
+import { GET_ALL_PROJECTS } from '../../common/graphql';
 import { Button, ProjectBookmark } from '../../components';
-import { monthDifference } from '../../helpers/date.helper';
 import { ProjectsPageData } from './projects.page.interface';
 import { TransparentContainer } from '../home/Home.page.styles';
-import { PROJECTS_PAGE } from '../../common/graphql/pages.query';
-import { Project } from '../../common/interface/projects.interface';
-import { GET_ALL_PROJECTS } from '../../common/graphql/project.query';
 import { Container, Description, TimeLineContainer, Title } from './Projects.page.styles';
 
 const ProjectsPage = () => {

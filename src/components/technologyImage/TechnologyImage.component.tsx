@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { getImageURL } from '../../helpers/image.helper';
-import { Technology } from '../../common/interface/technology.interface';
+import { getImageURL } from '../../helpers';
+import { Technology } from '../../common/interface';
 import { Image, TechnologyContainer, Text } from './TechnologyImage.component.styles';
 
 interface TechnologyImageProps {

@@ -20,28 +20,13 @@ const Image = styled.div`
   }
 `;
 
-const Tags = styled.div`
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  padding: 1rem 0 0.5rem;
-
-  & span {
-    margin-right: 1rem;
-    padding-bottom: 0.5rem;
-    font-size: ${globalStylesVariables.textSize.small};
-		color: ${globalStylesVariables.textColors.primary};
-    opacity: 0.7;
-  }
-`;
-
 const Information = styled.div`
   padding: 0 0 1.5rem;
 
   & h2 {
     font-size: ${globalStylesVariables.textSize.medium};
     color: ${globalStylesVariables.textColors.primary};
+    text-transform: capitalize;
   }
 
   & p {
@@ -63,4 +48,4 @@ const ButtonContainer = styled.div<{ isVisible: boolean }>`
   }
 `;
 
-export { Card, Image, Tags, Information, ButtonContainer };
+export { Card, Image, Information, ButtonContainer };

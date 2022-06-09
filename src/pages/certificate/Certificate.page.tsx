@@ -4,14 +4,14 @@ import { useQuery } from '@apollo/client';
 import { MdFavorite } from 'react-icons/md';
 import { useParams } from 'react-router-dom';
 
-import { getImageURL } from '../../helpers/image.helper';
-import { GET_CERTIFICATE_BY_ID } from '../../common/graphql/certificate.query';
-import { Certificate, CertificateByIDVariables } from '../../common/interface/certificate.interface';
+import { getImageURL } from '../../helpers';
+import { GET_CERTIFICATE_BY_ID } from '../../common/graphql';
+import { Certificate, CertificateByIDVariables } from '../../common/interface';
 import { Container, Information, InformationContainer, InformationTop, PrincipalImage } from './Certificate.page.style';
 
 const CertificatePage = () => {
+  const { certificateID: id } = useParams();
   const [certificate, setCertificate] = useState<Certificate>({} as Certificate);
-  const { id } = useParams();
   const { data } = useQuery<any, CertificateByIDVariables>(GET_CERTIFICATE_BY_ID, { variables: { id: id!.toString() ?? 0 } });
 
   useEffect(() => {
@@ -38,7 +38,7 @@ const CertificatePage = () => {
             </a>
           </InformationContainer>
           <InformationContainer>
-            {certificate.outstanding && (
+            {!!certificate.outstanding && (
               <span>
                 <MdFavorite />
               </span>
