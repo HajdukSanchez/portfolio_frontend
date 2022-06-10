@@ -1,9 +1,9 @@
 import React from 'react';
 
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { RoutesNavigation } from '../common/enums/navigation.enum';
 
 import { Layout } from '../components';
+import { RoutesNavigation } from '../common/enums/navigation.enum';
 import { AboutMePage, CertificatePage, CertificatesPage, HomePage, ProjectPage, ProjectsPage } from '../pages';
 
 const Navigation = () => {

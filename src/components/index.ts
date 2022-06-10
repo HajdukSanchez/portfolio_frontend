@@ -1,3 +1,4 @@
+export { InfoTag } from './infoTag/InfoTag';
 export { Tags } from './tags/Tags.component';
 export { Menu } from './menu/Menu.components';
 export { Arrow } from './arrow/Arrow.component';

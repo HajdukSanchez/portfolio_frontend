@@ -28,7 +28,6 @@ const Container = styled.main`
 const Image = styled.div`
   position: relative;
   width: 100%;
-  max-height: 25rem;
   border-radius: ${globalStylesVariables.borderRadius};
   margin-bottom: 5rem;
 
@@ -43,8 +42,12 @@ const Image = styled.div`
   & > img {
     border-radius: inherit;
     object-fit: cover;
+  }
 
-    @media ${mediaQueries.tablet} {
+  @media ${mediaQueries.tablet} {
+    max-height: 25rem;
+
+    & > img {
       max-height: 25rem;
     }
   }

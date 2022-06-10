@@ -8,7 +8,18 @@ import { Project } from '../../common/interface';
 import { RoutesNavigation } from '../../common/enums/navigation.enum';
 import { Actions, Container, Image, Information } from './ProjectBookmark.component.style';
 
+/**
+ * Data model to the props of the component
+ *
+ * @interface ProjectBookmarkProps
+ */
 interface ProjectBookmarkProps {
+  /**
+   * Project to show in the bookmark
+   *
+   * @type {Project}
+   * @memberof ProjectBookmarkProps
+   */
   project: Project;
 }
 

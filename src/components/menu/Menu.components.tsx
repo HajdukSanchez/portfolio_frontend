@@ -1,7 +1,5 @@
 import React, { useContext } from 'react';
 
-import { Link } from 'react-router-dom';
-
 import { AppContext } from '../../context/AppContext';
 import { useNavigationPages } from '../../hooks/useNavigationPages';
 import { RoutesNavigation } from '../../common/enums/navigation.enum';
@@ -13,8 +11,26 @@ import { HamburgerButton, Image, MenuContainer, MenuItem, MenuList, MenuNav } fr
  * @interface MenuOption
  */
 interface MenuOption {
+  /**
+   * Id of the menu option
+   *
+   * @type {number}
+   * @memberof MenuOption
+   */
   id: number;
+  /**
+   * Label of the menu option
+   *
+   * @type {string}
+   * @memberof MenuOption
+   */
   label: string;
+  /**
+   * Link of the menu option
+   *
+   * @type {string}
+   * @memberof MenuOption
+   */
   link: string;
 }
 
@@ -37,10 +53,10 @@ const Menu = () => {
   return (
     <MenuContainer>
       <Image>
-        <Link to={RoutesNavigation.Home}>
+        <a onClick={() => makeNavigation(RoutesNavigation.Home)}>
           <img src={logo} alt="logo" />
           <span>{username}</span>
-        </Link>
+        </a>
       </Image>
       <HamburgerButton onClick={toggleMenu} showMenu={showMenu}>
         <span />

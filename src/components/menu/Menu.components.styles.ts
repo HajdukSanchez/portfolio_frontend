@@ -10,7 +10,7 @@ const MenuContainer = styled.header`
   padding: 1.5rem 1rem;
   background-color: ${globalStylesVariables.colors.primary};
   border-bottom: 0.01rem solid ${globalStylesVariables.colors.alternativeOpacity};
-	z-index: ${globalStylesVariables.zIndex.level3};
+  z-index: ${globalStylesVariables.zIndex.level3};
 
   @media ${mediaQueries.tablet} {
     padding: 0 1rem;
@@ -30,6 +30,7 @@ const Image = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
 
     & > img {
       width: 1.5rem;
@@ -39,7 +40,7 @@ const Image = styled.div`
       margin-left: 1rem;
       color: white;
       font-size: 1.4rem;
-			font-weight: 500;
+      font-weight: 500;
     }
   }
 `;
@@ -79,7 +80,7 @@ const MenuItem = styled.li`
   border-radius: ${globalStylesVariables.borderRadius};
   text-align: center;
   font-size: ${globalStylesVariables.textSize.small};
-	font-weight: 500;
+  font-weight: 500;
   background-color: ${globalStylesVariables.colors.alternative};
   transform: translateX(0);
   transition: all ${globalStylesVariables.transition};

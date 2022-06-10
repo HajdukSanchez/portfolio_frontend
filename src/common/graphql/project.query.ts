@@ -1,5 +1,8 @@
 import { gql } from '@apollo/client';
 
+/**
+ * Query to get the top projects filter why outstanding values
+ */
 const GET_TOP_PROJECTS = gql`
   query GetTopProjects($limit: Int, $outstanding: Boolean) {
     projects(pagination: { limit: $limit }, filters: { outstanding: { eq: $outstanding } }) {
@@ -28,6 +31,9 @@ const GET_TOP_PROJECTS = gql`
   }
 `;
 
+/**
+ * Query to get all the projects
+ */
 const GET_ALL_PROJECTS = gql`
   query GetAllProjects {
     projects(sort: "date:desc") {
@@ -51,6 +57,9 @@ const GET_ALL_PROJECTS = gql`
   }
 `;
 
+/**
+ * Query to get a specific project by id
+ */
 const GET_PROJECT_BY_ID = gql`
   query GetProjectByID($id: ID!) {
     project(id: $id) {

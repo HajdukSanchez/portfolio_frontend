@@ -7,7 +7,18 @@ import { Certificate } from '../../common/interface';
 import { useNavigationPages } from '../../hooks/useNavigationPages';
 import { Badge, Card, Image, Information, Title } from './CertificateCard.component.styles';
 
+/**
+ * Data model for the props of the component
+ *
+ * @interface CertificateCardProps
+ */
 interface CertificateCardProps {
+  /**
+   * Certificate to show in the card
+   *
+   * @type {Certificate}
+   * @memberof CertificateCardProps
+   */
   certificate: Certificate;
 }
 

@@ -1,5 +1,8 @@
 import { gql } from '@apollo/client';
 
+/**
+ * Query to get the user information by id
+ */
 const GET_USER = gql`
   query GetUserByID($uid: ID!) {
     profile(id: $uid) {

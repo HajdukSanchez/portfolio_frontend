@@ -10,7 +10,18 @@ import { useNavigationPages } from '../../hooks/useNavigationPages';
 import { RoutesNavigation } from '../../common/enums/navigation.enum';
 import { ButtonContainer, Card, Image, Information } from './ProjectCard.component.styles';
 
+/**
+ * Data model for the props of the component
+ *
+ * @interface ProjectCardProps
+ */
 interface ProjectCardProps {
+  /**
+   * Project to show in the card
+   *
+   * @type {Project}
+   * @memberof ProjectCardProps
+   */
   project: Project;
 }
 

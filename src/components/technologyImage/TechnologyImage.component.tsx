@@ -4,7 +4,18 @@ import { getImageURL } from '../../helpers';
 import { Technology } from '../../common/interface';
 import { Image, TechnologyContainer, Text } from './TechnologyImage.component.styles';
 
+/**
+ * Data model for the props of the component
+ *
+ * @interface TechnologyImageProps
+ */
 interface TechnologyImageProps {
+  /**
+   * Technology to show in the image
+   *
+   * @type {Technology}
+   * @memberof TechnologyImageProps
+   */
   technology: Technology;
 }
 
