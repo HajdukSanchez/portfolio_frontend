@@ -10,7 +10,7 @@ import { Technology, TopTechnologiesVariables } from '../../../../common/interfa
 
 const TechnologiesSection = ({ title }: TechnologySectionProps) => {
   const [technologies, setTechnologies] = useState<Technology[]>([]);
-  const { data } = useQuery<any, TopTechnologiesVariables>(GET_TOP_TECHNOLOGIES, { variables: { limit: 3, outstanding: true } });
+  const { data } = useQuery<any, TopTechnologiesVariables>(GET_TOP_TECHNOLOGIES, { variables: { limit: 4, outstanding: true } });
 
   useEffect(() => {
     createObject();

@@ -39,12 +39,12 @@ const ProjectsSection = ({ title, subTitle }: ProjectSectionProps) => {
   const { makeNavigation } = useNavigationPages();
 
   useEffect(() => {
-    setProjects({ columnOne: [], columnTwo: [] }); // Reset projects
     createObject();
   }, [data]);
 
   const createObject = () => {
     if (data) {
+      setProjects({ columnOne: [], columnTwo: [] }); // Reset projects
       data.projects.data.map(({ attributes, id }: any, index: number) => {
         const tags: Tag[] = []; // Tags for the project
         attributes.tags.data.forEach((item: any) => {
@@ -63,14 +63,14 @@ const ProjectsSection = ({ title, subTitle }: ProjectSectionProps) => {
 
         // One project per column in each iteration
         if (index % 2 === 0) {
+          projects.columnOne.push(newProject);
           setProjects({
             ...projects,
-            columnOne: [...projects.columnOne, newProject],
           });
         } else {
+          projects.columnTwo.push(newProject);
           setProjects({
             ...projects,
-            columnTwo: [...projects.columnTwo, newProject],
           });
         }
       });

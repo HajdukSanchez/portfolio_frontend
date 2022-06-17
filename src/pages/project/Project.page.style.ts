@@ -12,8 +12,9 @@ const Container = styled.main`
 
   & > h1 {
     text-transform: capitalize;
-    font-size: ${globalStylesVariables.textSize.semiLarge};
+    font-size: ${globalStylesVariables.textSize.extraLarge};
     color: ${globalStylesVariables.textColors.primary};
+    padding-bottom: 3rem;
   }
 
   @media ${mediaQueries.desktop} {
@@ -33,8 +34,8 @@ const Image = styled.div`
 
   & > span {
     position: absolute;
-    bottom: 0;
-    right: 0;
+    bottom: 0.5rem;
+    right: 0.5rem;
     font-size: ${globalStylesVariables.textSize.large};
     color: ${globalStylesVariables.textColors.tertiary};
   }
@@ -49,6 +50,7 @@ const Image = styled.div`
 
     & > img {
       max-height: 25rem;
+      object-position: top;
     }
   }
 `;
@@ -106,10 +108,27 @@ const TechnologyItem = styled.h6<{ primaryColor: string; secondaryColor: string 
 `;
 
 const Description = styled.div`
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
   margin: 4rem 0 6rem;
   width: 100%;
-  font-size: ${globalStylesVariables.textSize.medium};
-  color: ${globalStylesVariables.textColors.primary};
+  font-size: ${globalStylesVariables.textSize.small};
+  color: ${globalStylesVariables.textColors.secondary};
+
+  & h2 {
+    width: 100%;
+    padding: 1rem 0;
+    text-align: start;
+  }
+
+  & img {
+    margin: 1.5rem;
+    margin-left: 0;
+    max-width: 60rem;
+    text-align: center;
+    border-radius: ${globalStylesVariables.borderRadius};
+  }
 `;
 
 const ButtonContainer = styled.div`

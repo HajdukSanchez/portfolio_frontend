@@ -16,6 +16,8 @@ const TechnologyContainer = styled.div`
   }
 
   @media ${mediaQueries.tablet} {
+    margin-right: 3rem;
+
     &:first-child {
       margin-left: 0;
     }
@@ -36,7 +38,7 @@ const Image = styled.div`
 
 const Text = styled.h6`
   font-size: ${globalStylesVariables.textSize.small};
-	color: ${globalStylesVariables.textColors.tertiary};
+  color: ${globalStylesVariables.textColors.tertiary};
   transform: translateY(-2rem);
   transition: ${globalStylesVariables.transition};
   opacity: 0;

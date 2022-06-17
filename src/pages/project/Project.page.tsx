@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 
 import { FaStar } from 'react-icons/fa';
+import remarkImages from 'remark-images';
 import { useQuery } from '@apollo/client';
 import ReactMarkdown from 'react-markdown';
 import { MdPageview } from 'react-icons/md';
@@ -68,7 +69,9 @@ const ProjectPage = () => {
         ))}
       </Technologies>
       <Description>
-        <ReactMarkdown>{project.description ?? ''}</ReactMarkdown>
+        <ReactMarkdown transformImageUri={(uri) => (uri.startsWith('http') ? uri : `${process.env.REACT_APP_BASE_STRAPI_URL}${uri}`)}>
+          {project.description ?? ''}
+        </ReactMarkdown>
       </Description>
       <ButtonContainer>
         <Button text="See code" onClick={() => navigateOutside(project.githubUrl ?? '')} type={'active'} icon={<BsFileEarmarkCodeFill />} />

@@ -25,7 +25,9 @@ const AboutMePage = () => {
             {name} {lastName}
           </h1>
           <h4>{profession}</h4>
-          <ReactMarkdown>{about ?? ''}</ReactMarkdown>
+          <ReactMarkdown transformImageUri={(uri) => (uri.startsWith('http') ? uri : `${process.env.REACT_APP_BASE_STRAPI_URL}${uri}`)}>
+            {about ?? ''}
+          </ReactMarkdown>
           <InfoTagList>
             <InfoTag title={email} icon={<SiMinutemailer />} onClik={() => navigateOutside(`mailto:${email}` ?? '')} />
             <InfoTag title={`${cellphone}`} icon={<BsTelephoneFill />} onClik={() => navigateOutside(`tel:${cellphone}` ?? '')} />

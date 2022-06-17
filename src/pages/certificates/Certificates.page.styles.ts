@@ -11,6 +11,10 @@ const Container = styled.main`
   background-image: linear-gradient(to bottom, rgb(30 47 55) 98%, rgb(25 33 44));
 
   @media ${mediaQueries.tablet} {
+    padding: 3rem 10rem;
+  }
+
+  @media ${mediaQueries.desktop} {
     padding: 3rem 16rem;
   }
 `;
@@ -33,34 +37,20 @@ const Description = styled.p`
 
 const CertificatesContainer = styled.div`
   display: flex;
-  flex-direction: row;
-	flex-wrap: wrap;
+  flex-direction: column;
+  flex-wrap: wrap;
   justify-content: space-evenly;
   align-items: center;
   margin: 0 auto;
 
-  /* & > article {
-    margin: 1rem;
-
-    @media ${mediaQueries.tablet} {
-      /* This is for tablet in the own component
-      &:nth-child(2n + 1) {
-        align-self: flex-end;
-      }
-
-      &:nth-child(2n) {
-        align-self: flex-start;
-      }
-    }
-  } */
-
-  @media ${mediaQueries.tablet} {
-    width: 70%;
-    margin-top: 2.5rem;
+  & > article {
+    margin-left: 4rem;
+    margin-bottom: 2rem;
   }
 
-  @media ${mediaQueries.desktop} {
-    width: 50%;
+  @media ${mediaQueries.tablet} {
+    flex-direction: row;
+    margin-top: 2.5rem;
   }
 `;
 

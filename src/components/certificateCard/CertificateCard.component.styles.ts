@@ -13,10 +13,7 @@ const Card = styled.article`
   transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
   box-shadow: 1px 2px 5px 0px transparent;
   cursor: pointer;
-
-  &:first-child {
-    margin-left: 4rem;
-  }
+  max-height: 30rem;
 
   &:hover {
     transform: scale(1.05);
@@ -66,6 +63,9 @@ const Title = styled.h4`
   font-size: ${globalStylesVariables.textSize.medium};
   color: ${globalStylesVariables.textColors.primary};
   text-transform: capitalize;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 `;
 
 export { Card, Badge, Image, Information, Title };

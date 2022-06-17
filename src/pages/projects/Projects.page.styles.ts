@@ -30,6 +30,10 @@ const Container = styled.main`
   }
 
   @media ${mediaQueries.tablet} {
+    padding: 3rem 10rem;
+  }
+
+  @media ${mediaQueries.desktop} {
     padding: 3rem 16rem;
   }
 `;
@@ -54,7 +58,7 @@ const TimeLineContainer = styled.div`
   margin: 0 auto;
 
   @media ${mediaQueries.tablet} {
-    width: 70%;
+    width: 100%;
     margin-top: 2.5rem;
   }
 

@@ -29,10 +29,16 @@ const Container = styled.main`
 const PrincipalImage = styled.div`
   width: 100%;
   padding-bottom: 2rem;
+  border-radius: ${globalStylesVariables.borderRadius};
+
+  & > img {
+    border-radius: inherit;
+  }
 
   @media ${mediaQueries.tablet} {
     padding: 5rem;
     padding-top: 0;
+    padding-left: 0;
   }
 `;
 
@@ -88,7 +94,7 @@ const InformationContainer = styled.div`
 
   & > span,
   & > a {
-    font-size: 3rem;
+    font-size: ${globalStylesVariables.textSize.large};
     color: ${globalStylesVariables.textColors.tertiary};
   }
 
@@ -97,7 +103,8 @@ const InformationContainer = styled.div`
   }
 
   & > a {
-    margin-left: 2rem;
+    margin-left: 1.5rem;
+    text-transform: capitalize;
   }
 
   & > img {

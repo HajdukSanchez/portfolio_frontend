@@ -46,7 +46,7 @@ const Information = styled.div`
     width: 60%;
 
     & > div:last-child {
-      width: 50%;
+      width: 65%;
     }
   }
 `;

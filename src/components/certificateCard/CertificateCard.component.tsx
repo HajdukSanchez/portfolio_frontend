@@ -35,7 +35,7 @@ const CertificateCard = ({ certificate: { image, name, id, badgePicture, date } 
       </Image>
       <Information>
         {date && <h5>{date}</h5>}
-        <Title>{name}</Title>
+        <Title title={name}>{name}</Title>
       </Information>
     </Card>
   );

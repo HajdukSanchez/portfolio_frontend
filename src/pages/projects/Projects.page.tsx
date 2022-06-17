@@ -65,7 +65,7 @@ const ProjectsPage = () => {
       <Description>{information.description}</Description>
       <Button text={information.buttonText} onClick={handleButtonClick} icon={<RiGithubLine />} type={'linkedIn'} />
       <TimeLineContainer>
-        <Timeline active={1} bulletSize={20} lineWidth={3} color={'cyan'}>
+        <Timeline active={projects.length} bulletSize={20} lineWidth={3} color={'cyan'} reverseActive>
           {projects.map((project: Project, index: number) => {
             const monthDiff: number = monthDifference(project.date!, new Date().toDateString());
             const monthDiffText: string = monthDiff < 1 ? 'This month' : `${monthDiff} months ago`;

@@ -15,19 +15,29 @@ const Container = styled.article`
 
 const Image = styled.div`
   width: 25%;
+  max-height: 15rem;
+  border-radius: ${globalStylesVariables.borderRadius};
+
+  & > img {
+    border-radius: inherit;
+    object-fit: cover;
+    object-position: top;
+  }
 
   @media ${mediaQueries.tablet} {
-    width: 33%;
+    width: 35%;
   }
 `;
 
 const Information = styled.div`
   padding-left: 2rem;
+  width: 70%;
 
   & > h2 {
     color: ${globalStylesVariables.textColors.primary};
     font-size: ${globalStylesVariables.textSize.small};
     text-transform: capitalize;
+    padding-bottom: 1rem;
   }
 
   & > p {
@@ -36,7 +46,7 @@ const Information = styled.div`
   }
 
   @media ${mediaQueries.tablet} {
-    width: 33%;
+    width: 45%;
   }
 `;
 
@@ -53,7 +63,7 @@ const Actions = styled.div`
   }
 
   @media ${mediaQueries.tablet} {
-    width: 33%;
+    width: 20%;
     align-items: flex-end;
   }
 `;

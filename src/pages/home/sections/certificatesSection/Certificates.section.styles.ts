@@ -42,10 +42,14 @@ const CertificateCardList = styled.div`
   padding: 5rem 0;
   width: 100%;
   overflow-x: auto;
-	overflow-y: unset;
+  overflow-y: unset;
 
   &::-webkit-scrollbar {
     display: none;
+  }
+
+  & > article:first-child {
+    margin-left: 4rem;
   }
 
   @media ${mediaQueries.tablet} {
