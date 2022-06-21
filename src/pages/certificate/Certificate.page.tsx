@@ -4,7 +4,6 @@ import { useQuery } from '@apollo/client';
 import { MdFavorite } from 'react-icons/md';
 import { useParams } from 'react-router-dom';
 
-import { getImageURL } from '../../helpers';
 import { GET_CERTIFICATE_BY_ID } from '../../common/graphql';
 import { Certificate, CertificateByIDVariables } from '../../common/interface';
 import { Container, Information, InformationContainer, InformationTop, PrincipalImage } from './Certificate.page.style';
@@ -26,13 +25,11 @@ const CertificatePage = () => {
 
   return (
     <Container>
-      <PrincipalImage>{certificate.image && <img src={getImageURL(certificate.image.data.attributes.url)} alt={certificate.name} />}</PrincipalImage>
+      <PrincipalImage>{certificate.image && <img src={certificate.image} alt={certificate.name} />}</PrincipalImage>
       <Information>
         <InformationTop>
           <InformationContainer>
-            {certificate.company?.icon && (
-              <img src={getImageURL(certificate.company!.icon.data.attributes.url)} alt={`companyPicture-${certificate.name}`} />
-            )}
+            {certificate.company?.icon && <img src={certificate.company!.icon} alt={`companyPicture-${certificate.name}`} />}
             <a href={certificate.company?.link} target="_blank" rel="noopener noreferrer">
               {certificate.company?.name}
             </a>
@@ -43,9 +40,7 @@ const CertificatePage = () => {
                 <MdFavorite />
               </span>
             )}
-            {certificate.badgePicture && (
-              <img src={getImageURL(certificate.badgePicture!.data.attributes.url)} alt={`badgePicture-${certificate.name}`} />
-            )}
+            {certificate.badgePicture && <img src={certificate.badgePicture} alt={`badgePicture-${certificate.name}`} />}
           </InformationContainer>
         </InformationTop>
         <h1>{certificate.name}</h1>

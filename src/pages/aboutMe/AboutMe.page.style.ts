@@ -18,6 +18,7 @@ const Card = styled.div`
   padding: 2rem;
   background-color: ${globalStylesVariables.colors.secondary};
   border-radius: ${globalStylesVariables.borderRadius};
+	box-shadow: ${globalStylesVariables.boxShadow};
 
   @media ${mediaQueries.tablet} {
     flex-direction: row-reverse;

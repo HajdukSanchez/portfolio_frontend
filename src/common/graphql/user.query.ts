@@ -18,20 +18,8 @@ const GET_USER = gql`
           profession
           username
           about
-          picture {
-            data {
-              attributes {
-                url
-              }
-            }
-          }
-          cv {
-            data {
-              attributes {
-                url
-              }
-            }
-          }
+          picture
+          cv
         }
       }
     }

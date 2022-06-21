@@ -1,5 +1,3 @@
-import { Image } from './image.interface';
-
 /**
  * Data model for the company where the certificate is awarded
  *
@@ -24,8 +22,8 @@ export interface Company {
   /**
    * Icon of the company
    *
-   * @type {Image}
+   * @type {string}
    * @memberof Company
    */
-  icon: Image;
+  icon: string;
 }

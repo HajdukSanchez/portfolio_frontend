@@ -44,7 +44,8 @@ const ProjectsSection = ({ title, subTitle }: ProjectSectionProps) => {
 
   const createObject = () => {
     if (data) {
-      setProjects({ columnOne: [], columnTwo: [] }); // Reset projects
+      projects.columnOne = []; // Reset the array
+      projects.columnTwo = []; // Reset the array
       data.projects.data.map(({ attributes, id }: any, index: number) => {
         const tags: Tag[] = []; // Tags for the project
         attributes.tags.data.forEach((item: any) => {

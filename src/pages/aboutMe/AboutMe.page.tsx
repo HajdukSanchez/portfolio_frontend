@@ -7,9 +7,9 @@ import { SiMinutemailer } from 'react-icons/si';
 import { BsTelephoneFill } from 'react-icons/bs';
 import { BsTwitter, BsGithub, BsLinkedin } from 'react-icons/bs';
 
+import { navigateOutside } from '../../helpers';
 import { Button, InfoTag } from '../../components';
 import { AppContext } from '../../context/AppContext';
-import { getImageURL, navigateOutside } from '../../helpers';
 import { Card, Container, Image, Information, InfoTagList } from './AboutMe.page.style';
 
 const AboutMePage = () => {
@@ -36,9 +36,9 @@ const AboutMePage = () => {
             <InfoTag title={'Twitter'} icon={<BsTwitter />} onClik={() => navigateOutside(twitter ?? '')} />
             <InfoTag title={username} icon={<IoRocket />} />
           </InfoTagList>
-          <Button text="Download my CV" onClick={() => navigateOutside(cv ?? '')} icon={<HiDownload />} />
+          {cv && <Button text="Download my CV" onClick={() => navigateOutside(cv ?? '')} icon={<HiDownload />} />}
         </Information>
-        <Image>{picture?.data?.attributes?.url && <img src={getImageURL(picture.data.attributes.url)} alt={name} />}</Image>
+        <Image>{picture && <img src={picture} alt={name} />}</Image>
       </Card>
     </Container>
   );

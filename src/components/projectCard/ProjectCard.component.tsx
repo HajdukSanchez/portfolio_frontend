@@ -3,8 +3,7 @@ import React, { useContext } from 'react';
 import { BsArrowRight } from 'react-icons/bs';
 
 import { Button, Tags } from '../';
-import { getImageURL } from '../../helpers';
-import { Project, Tag } from '../../common/interface';
+import { Project } from '../../common/interface';
 import { AppContext } from '../../context/AppContext';
 import { useNavigationPages } from '../../hooks/useNavigationPages';
 import { RoutesNavigation } from '../../common/enums/navigation.enum';
@@ -32,7 +31,7 @@ const ProjectCard = ({ project: { cover, tags, name, shortDescription, id } }: P
   return (
     <Card>
       <Image>
-        <img src={getImageURL(cover.data.attributes.url)} alt={name} />
+        <img src={cover} alt={name} />
       </Image>
       <Tags tags={tags} />
       <Information>

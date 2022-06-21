@@ -10,20 +10,8 @@ const GET_TOP_CERTIFICATES = gql`
         id
         attributes {
           name
-          image {
-            data {
-              attributes {
-                url
-              }
-            }
-          }
-          badgePicture {
-            data {
-              attributes {
-                url
-              }
-            }
-          }
+          image
+          badgePicture
         }
       }
     }
@@ -41,20 +29,8 @@ const GET_ALL_CERTIFICATES = gql`
         attributes {
           name
           date
-          image {
-            data {
-              attributes {
-                url
-              }
-            }
-          }
-          badgePicture {
-            data {
-              attributes {
-                url
-              }
-            }
-          }
+          image
+          badgePicture
         }
       }
     }
@@ -74,32 +50,14 @@ const GET_CERTIFICATE_BY_ID = gql`
           courseLink
           comment
           outstanding
-          image {
-            data {
-              attributes {
-                url
-              }
-            }
-          }
-          badgePicture {
-            data {
-              attributes {
-                url
-              }
-            }
-          }
+          image
+          badgePicture
           company {
             data {
               attributes {
                 name
                 link
-                icon {
-                  data {
-                    attributes {
-                      url
-                    }
-                  }
-                }
+                icon
               }
             }
           }

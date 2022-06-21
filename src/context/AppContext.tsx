@@ -25,6 +25,7 @@ const AppContextProvider = ({ children }: AppContextProviderProps) => {
     if (data) {
       const dataUser = data.profile.data.attributes;
       const newUser: User = {
+        cv: dataUser.cv,
         name: dataUser.name,
         lastName: dataUser.lastName,
         username: dataUser.username,
@@ -35,8 +36,7 @@ const AppContextProvider = ({ children }: AppContextProviderProps) => {
         profession: dataUser.profession,
         about: dataUser.about,
         cellphone: dataUser.cellphone,
-        cv: `${process.env.REACT_APP_BASE_STRAPI_URL}${dataUser.cv.data[0]?.attributes.url}`,
-        picture: dataUser.picture.data ? dataUser.picture : '',
+        picture: dataUser.picture ?? '',
       };
       setUser(newUser);
     }

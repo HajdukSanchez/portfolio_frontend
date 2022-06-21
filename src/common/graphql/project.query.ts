@@ -11,13 +11,7 @@ const GET_TOP_PROJECTS = gql`
         attributes {
           name
           shortDescription
-          cover {
-            data {
-              attributes {
-                url
-              }
-            }
-          }
+          cover
           tags {
             data {
               attributes {
@@ -44,13 +38,7 @@ const GET_ALL_PROJECTS = gql`
           name
           shortDescription
           githubUrl
-          cover {
-            data {
-              attributes {
-                url
-              }
-            }
-          }
+          cover
         }
       }
     }
@@ -71,6 +59,7 @@ const GET_PROJECT_BY_ID = gql`
           projectPageUrl
           outstanding
           date
+          cover
           technologies {
             data {
               attributes {
@@ -84,13 +73,6 @@ const GET_PROJECT_BY_ID = gql`
             data {
               attributes {
                 name
-              }
-            }
-          }
-          cover {
-            data {
-              attributes {
-                url
               }
             }
           }

@@ -3,7 +3,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { BsGithub, BsBoxArrowUpRight } from 'react-icons/bs';
 
-import { getImageURL } from '../../helpers';
 import { Project } from '../../common/interface';
 import { RoutesNavigation } from '../../common/enums/navigation.enum';
 import { Actions, Container, Image, Information } from './ProjectBookmark.component.style';
@@ -27,7 +26,7 @@ const ProjectBookmark = ({ project: { id, cover, name, shortDescription, githubU
   return (
     <Container>
       <Image>
-        <img src={getImageURL(cover.data.attributes.url)} alt={name} />
+        <img src={cover} alt={name} />
       </Image>
       <Information>
         <h2>{name}</h2>

@@ -1,5 +1,4 @@
 import { Company } from './company.interface';
-import { Image } from './image.interface';
 
 /**
  * Data model for a project card
@@ -25,10 +24,10 @@ export interface Certificate {
   /**
    * The image of the certificate
    *
-   * @type {Image}
+   * @type {string}
    * @memberof Certificate
    */
-  image: Image;
+  image: string;
   /**
    * The date of the certificate
    *
@@ -46,10 +45,10 @@ export interface Certificate {
   /**
    * The badge picture of the certificate
    *
-   * @type {Image}
+   * @type {string}
    * @memberof Certificate
    */
-  badgePicture?: Image;
+  badgePicture?: string;
   /**
    * Value to know if that is a favorite certificate
    *

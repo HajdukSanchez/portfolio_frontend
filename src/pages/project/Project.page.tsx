@@ -1,17 +1,16 @@
 import React, { useContext, useEffect, useState } from 'react';
 
 import { FaStar } from 'react-icons/fa';
-import remarkImages from 'remark-images';
 import { useQuery } from '@apollo/client';
 import ReactMarkdown from 'react-markdown';
 import { MdPageview } from 'react-icons/md';
 import { useParams } from 'react-router-dom';
 import { BsFileEarmarkCodeFill } from 'react-icons/bs';
 
+import { navigateOutside } from '../../helpers';
 import { Button, Tags } from '../../components';
 import { AppContext } from '../../context/AppContext';
 import { GET_PROJECT_BY_ID } from '../../common/graphql';
-import { getImageURL, navigateOutside } from '../../helpers';
 import { Technology, Project, ProjectByIDVariables } from '../../common/interface';
 import { ButtonContainer, Container, Description, Image, Profile, Technologies, TechnologyItem } from './Project.page.style';
 
@@ -45,7 +44,7 @@ const ProjectPage = () => {
   return (
     <Container>
       <Image>
-        {project.cover && <img src={getImageURL(project.cover.data.attributes.url)} alt={project.name} />}
+        {project.cover && <img src={project.cover} alt={project.name} />}
         {!!project.outstanding && (
           <span>
             <FaStar />
@@ -53,7 +52,7 @@ const ProjectPage = () => {
         )}
       </Image>
       <Profile>
-        {picture?.data?.attributes?.url && <img src={getImageURL(picture.data.attributes.url)} alt={userName} />}
+        {picture && <img src={picture} alt={userName} />}
         <div>
           <h3>{userName}</h3>
           <h5>{project.date}</h5>

@@ -1,6 +1,5 @@
 import React from 'react';
 
-import { getImageURL } from '../../helpers';
 import { Technology } from '../../common/interface';
 import { Image, TechnologyContainer, Text } from './TechnologyImage.component.styles';
 
@@ -23,7 +22,7 @@ const TechnologyImage = ({ technology: { image, name, primaryColor } }: Technolo
   return (
     <TechnologyContainer>
       <Image>
-        <img src={getImageURL(image.data.attributes.url)} alt={name} />
+        <img src={image} alt={name} />
       </Image>
       <Text style={{ color: primaryColor }}>{name.toLocaleUpperCase()}</Text>
     </TechnologyContainer>

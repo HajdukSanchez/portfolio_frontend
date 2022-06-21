@@ -1,5 +1,4 @@
 import { CertificateByIDVariables, TopCertificatesVariables } from './certificate.interface';
-import { Image } from './image.interface';
 import { Technology } from './technology.interface';
 
 /**
@@ -26,10 +25,10 @@ export interface Project {
   /**
    * Picture URL of the project
    *
-   * @type {Image}
+   * @type {string}
    * @memberof Project
    */
-  cover: Image;
+  cover: string;
   /**
    * Description of the project
    *

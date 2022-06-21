@@ -12,13 +12,7 @@ const GET_TOP_TECHNOLOGIES = gql`
           name
           primaryColor
           secondaryColor
-          picture {
-            data {
-              attributes {
-                url
-              }
-            }
-          }
+          picture
         }
       }
     }
