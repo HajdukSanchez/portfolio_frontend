@@ -24,15 +24,15 @@ interface AppStateProps {
  * @param {AppStateProps} { children } - Children to render
  * @return {*}
  */
-const _AppState = ({ children }: AppStateProps) => {
+const AppState = ({ children }: AppStateProps) => {
   return <AppContextProvider>{children}</AppContextProvider>;
 };
 
 const App = () => {
   return (
-    <_AppState>
+    <AppState>
       <Navigation />
-    </_AppState>
+    </AppState>
   );
 };
 

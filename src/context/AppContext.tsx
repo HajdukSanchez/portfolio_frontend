@@ -18,10 +18,10 @@ const AppContextProvider = ({ children }: AppContextProviderProps) => {
   const { data } = useQuery(GET_USER, { variables: { uid: 1 } });
 
   useEffect(() => {
-    _getUserInfo();
+    getUserInfo();
   }, [data]);
 
-  const _getUserInfo = () => {
+  const getUserInfo = () => {
     if (data) {
       const dataUser = data.profile.data.attributes;
       const newUser: User = {

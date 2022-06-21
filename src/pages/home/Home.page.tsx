@@ -11,16 +11,16 @@ const HomePage = () => {
   const [information, setInformation] = useState<HomePageSectionsData>({} as HomePageSectionsData);
   const { data } = useQuery(HOME_PAGE);
 
-  useEffect(() => {
-    createObject();
-  }, [data]);
-
   const createObject = () => {
     if (data) {
       const homeData: HomePageSectionsData = data.homePage.data.attributes;
       setInformation(homeData);
     }
   };
+
+  useEffect(() => {
+    createObject();
+  }, [data]);
 
   return (
     <Container>

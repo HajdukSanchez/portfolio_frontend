@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { globalStylesVariables, mediaQueries } from '../../common/style/styles';
+import { globalStylesVariables } from '../../common/style/styles';
 
 const Card = styled.article`
   position: relative;

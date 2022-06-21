@@ -53,7 +53,7 @@ const Menu = () => {
   return (
     <MenuContainer>
       <Image>
-        <a onClick={() => makeNavigation(RoutesNavigation.Home)}>
+        <a onClick={() => makeNavigation(RoutesNavigation.Home)} href="/">
           <img src={logo} alt="logo" />
           <span>{username}</span>
         </a>

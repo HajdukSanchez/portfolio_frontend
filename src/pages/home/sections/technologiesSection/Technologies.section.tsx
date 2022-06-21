@@ -12,11 +12,7 @@ const TechnologiesSection = ({ title }: TechnologySectionProps) => {
   const [technologies, setTechnologies] = useState<Technology[]>([]);
   const { data } = useQuery<any, TopTechnologiesVariables>(GET_TOP_TECHNOLOGIES, { variables: { limit: 4, outstanding: true } });
 
-  useEffect(() => {
-    createObject();
-  }, [data]);
-
-  const createObject = () => {
+	const createObject = () => {
     if (data) {
       setTechnologies([]); // Reset technologies
       data.technologies.data.map(({ id, attributes }: any) => {
@@ -31,6 +27,10 @@ const TechnologiesSection = ({ title }: TechnologySectionProps) => {
       });
     }
   };
+
+  useEffect(() => {
+    createObject();
+  }, [data]);
 
   return (
     <Section>

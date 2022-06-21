@@ -15,14 +15,6 @@ const CertificatesPage = () => {
   const { data } = useQuery(GET_ALL_CERTIFICATES);
   const { data: info } = useQuery(CERTIFICATES_PAGE);
 
-  useEffect(() => {
-    createObject();
-  }, [data]);
-
-  useEffect(() => {
-    getPageData();
-  }, [info]);
-
   const getPageData = () => {
     if (info) {
       const pageData: CertificatesPageData = info.certificatesPage.data.attributes.header;
@@ -45,6 +37,14 @@ const CertificatesPage = () => {
       });
     }
   };
+
+  useEffect(() => {
+    createObject();
+  }, [data]);
+
+  useEffect(() => {
+    getPageData();
+  }, [info]);
 
   return (
     <Container>

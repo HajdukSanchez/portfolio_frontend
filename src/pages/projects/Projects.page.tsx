@@ -23,14 +23,6 @@ const ProjectsPage = () => {
     user: { gitHub },
   } = useContext(AppContext);
 
-  useEffect(() => {
-    createObject();
-  }, [data]);
-
-  useEffect(() => {
-    getPageData();
-  }, [info]);
-
   const getPageData = () => {
     if (info) {
       const pageData: ProjectsPageData = info.projectsPage.data.attributes.header;
@@ -54,6 +46,14 @@ const ProjectsPage = () => {
       });
     }
   };
+
+  useEffect(() => {
+    createObject();
+  }, [data]);
+
+  useEffect(() => {
+    getPageData();
+  }, [info]);
 
   const handleButtonClick = () => {
     window.open(gitHub, '_blank');
