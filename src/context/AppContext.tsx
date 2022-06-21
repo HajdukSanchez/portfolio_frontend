@@ -1,4 +1,4 @@
-import { createContext, ReactNode, useEffect, useState } from 'react';
+import React, { createContext, ReactNode, useEffect, useState } from 'react';
 
 import { useQuery } from '@apollo/client';
 
@@ -36,7 +36,7 @@ const AppContextProvider = ({ children }: AppContextProviderProps) => {
         profession: dataUser.profession,
         about: dataUser.about,
         cellphone: dataUser.cellphone,
-        picture: dataUser.picture ?? '',
+        picture: dataUser.picture || '',
       };
       setUser(newUser);
     }

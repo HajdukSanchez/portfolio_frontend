@@ -19,7 +19,7 @@ interface TagsProps {
 }
 
 const Tags = ({ tags = [] }: TagsProps) => {
-  return <TagsContainer>{tags && tags?.map((tag: Tag, index: number) => <span key={`${index}-${tag.name}`}>#{tag.name}</span>)}</TagsContainer>;
+  return <TagsContainer>{tags && tags.map((tag: Tag, index: number) => <span key={`${index}-${tag.name}`}>#{tag.name}</span>)}</TagsContainer>;
 };
 
 export { Tags };

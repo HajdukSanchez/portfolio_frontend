@@ -42,7 +42,7 @@ const Button = ({ text, type = 'normal', icon = null, onClick }: ButtonProps) =>
   return (
     <ButtonContainer onClick={onClick} type={type} withIcon={icon ? true : false}>
       <span>{text}</span>
-      {icon ?? null}
+      {icon || null}
     </ButtonContainer>
   );
 };

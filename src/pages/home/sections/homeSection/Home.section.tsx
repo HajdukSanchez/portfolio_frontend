@@ -25,7 +25,7 @@ const HomeSection = ({ description }: HomeSectionProps) => {
       <Description>{description}</Description>
       <ButtonContainer>
         <Button text="See my work" onClick={() => makeNavigation(RoutesNavigation.Projects)} type={'active'} />
-        {cv && <Button text="Download CV" onClick={() => navigateOutside(cv ?? '')} icon={<HiDownload />} />}
+        {cv && <Button text="Download CV" onClick={() => navigateOutside(cv || '')} icon={<HiDownload />} />}
       </ButtonContainer>
       <Arrow />
     </Section>

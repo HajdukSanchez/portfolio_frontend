@@ -26,17 +26,17 @@ const AboutMePage = () => {
           </h1>
           <h4>{profession}</h4>
           <ReactMarkdown transformImageUri={(uri) => (uri.startsWith('http') ? uri : `${process.env.REACT_APP_BASE_STRAPI_URL}${uri}`)}>
-            {about ?? ''}
+            {about || ''}
           </ReactMarkdown>
           <InfoTagList>
-            <InfoTag title={email} icon={<SiMinutemailer />} onClik={() => navigateOutside(`mailto:${email}` ?? '')} />
-            <InfoTag title={`${cellphone}`} icon={<BsTelephoneFill />} onClik={() => navigateOutside(`tel:${cellphone}` ?? '')} />
-            <InfoTag title={'GitHub'} icon={<BsGithub />} onClik={() => navigateOutside(gitHub ?? '')} />
-            <InfoTag title={'LinkedIn'} icon={<BsLinkedin />} onClik={() => navigateOutside(linkedIn ?? '')} />
-            <InfoTag title={'Twitter'} icon={<BsTwitter />} onClik={() => navigateOutside(twitter ?? '')} />
+            <InfoTag title={email} icon={<SiMinutemailer />} onClik={() => navigateOutside(`mailto:${email}` || '')} />
+            <InfoTag title={`${cellphone}`} icon={<BsTelephoneFill />} onClik={() => navigateOutside(`tel:${cellphone}` || '')} />
+            <InfoTag title={'GitHub'} icon={<BsGithub />} onClik={() => navigateOutside(gitHub || '')} />
+            <InfoTag title={'LinkedIn'} icon={<BsLinkedin />} onClik={() => navigateOutside(linkedIn || '')} />
+            <InfoTag title={'Twitter'} icon={<BsTwitter />} onClik={() => navigateOutside(twitter || '')} />
             <InfoTag title={username} icon={<IoRocket />} />
           </InfoTagList>
-          {cv && <Button text="Download my CV" onClick={() => navigateOutside(cv ?? '')} icon={<HiDownload />} />}
+          {cv && <Button text="Download my CV" onClick={() => navigateOutside(cv || '')} icon={<HiDownload />} />}
         </Information>
         <Image>{picture && <img src={picture} alt={name} />}</Image>
       </Card>

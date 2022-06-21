@@ -22,7 +22,7 @@ const ProjectPage = () => {
   } = useContext(AppContext);
   const { data } = useQuery<any, ProjectByIDVariables>(GET_PROJECT_BY_ID, {
     variables: {
-      id: id?.toString() || '',
+      id: id || '',
     },
   });
 
@@ -61,7 +61,7 @@ const ProjectPage = () => {
       <h1>{project.name}</h1>
       <Tags tags={project.tags} />
       <Technologies>
-        {project.technologies?.map((technology: Technology, index: number) => (
+        {project.technologies && project.technologies.map((technology: Technology, index: number) => (
           <TechnologyItem key={`${index}-${technology.id}`} primaryColor={technology.primaryColor} secondaryColor={technology.secondaryColor}>
             {technology.name.toLocaleUpperCase()}
           </TechnologyItem>
@@ -69,13 +69,13 @@ const ProjectPage = () => {
       </Technologies>
       <Description>
         <ReactMarkdown transformImageUri={(uri) => (uri.startsWith('http') ? uri : `${process.env.REACT_APP_BASE_STRAPI_URL}${uri}`)}>
-          {project.description ?? ''}
+          {project.description || ''}
         </ReactMarkdown>
       </Description>
       <ButtonContainer>
-        <Button text="See code" onClick={() => navigateOutside(project.githubUrl ?? '')} type={'active'} icon={<BsFileEarmarkCodeFill />} />
+        <Button text="See code" onClick={() => navigateOutside(project.githubUrl || '')} type={'active'} icon={<BsFileEarmarkCodeFill />} />
         {project.projectPageUrl && (
-          <Button text="See project" onClick={() => navigateOutside(project.projectPageUrl ?? '')} type={'active'} icon={<MdPageview />} />
+          <Button text="See project" onClick={() => navigateOutside(project.projectPageUrl || '')} type={'active'} icon={<MdPageview />} />
         )}
       </ButtonContainer>
     </Container>

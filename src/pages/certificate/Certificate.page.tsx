@@ -11,7 +11,7 @@ import { Container, Information, InformationContainer, InformationTop, Principal
 const CertificatePage = () => {
   const { certificateID: id } = useParams();
   const [certificate, setCertificate] = useState<Certificate>({} as Certificate);
-  const { data } = useQuery<any, CertificateByIDVariables>(GET_CERTIFICATE_BY_ID, { variables: { id: id!.toString() ?? 0 } });
+  const { data } = useQuery<any, CertificateByIDVariables>(GET_CERTIFICATE_BY_ID, { variables: { id: `${id || 0}` } });
 
   const createObject = () => {
     if (data) {
@@ -29,9 +29,9 @@ const CertificatePage = () => {
       <Information>
         <InformationTop>
           <InformationContainer>
-            {certificate.company?.icon && <img src={certificate.company!.icon} alt={`companyPicture-${certificate.name}`} />}
-            <a href={certificate.company?.link} target="_blank" rel="noopener noreferrer">
-              {certificate.company?.name}
+            {certificate.company && certificate.company.icon && <img src={certificate.company!.icon} alt={`companyPicture-${certificate.name}`} />}
+            <a href={certificate.company ? certificate.company.link : ''} target="_blank" rel="noopener noreferrer">
+              {certificate.company ? certificate.company.name : ''}
             </a>
           </InformationContainer>
           <InformationContainer>
