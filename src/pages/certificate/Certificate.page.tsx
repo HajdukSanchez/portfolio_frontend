@@ -13,15 +13,15 @@ const CertificatePage = () => {
   const [certificate, setCertificate] = useState<Certificate>({} as Certificate);
   const { data } = useQuery<any, CertificateByIDVariables>(GET_CERTIFICATE_BY_ID, { variables: { id: id!.toString() ?? 0 } });
 
-  useEffect(() => {
-    createObject();
-  }, [data]);
-
   const createObject = () => {
     if (data) {
       setCertificate({ ...data.certificate.data.attributes, company: data.certificate.data.attributes.company.data.attributes });
     }
   };
+
+  useEffect(() => {
+    createObject();
+  }, [data]);
 
   return (
     <Container>

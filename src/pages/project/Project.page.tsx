@@ -26,10 +26,6 @@ const ProjectPage = () => {
     },
   });
 
-  useEffect(() => {
-    createObject();
-  }, [data]);
-
   const createObject = () => {
     console.log({ data });
     if (data) {
@@ -40,6 +36,10 @@ const ProjectPage = () => {
       });
     }
   };
+
+  useEffect(() => {
+    createObject();
+  }, [data]);
 
   return (
     <Container>

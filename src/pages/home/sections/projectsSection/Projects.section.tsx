@@ -38,10 +38,6 @@ const ProjectsSection = ({ title, subTitle }: ProjectSectionProps) => {
   const { data } = useQuery<any, TopProjectsVariables>(GET_TOP_PROJECTS, { variables: { limit: 6, outstanding: true } });
   const { makeNavigation } = useNavigationPages();
 
-  useEffect(() => {
-    createObject();
-  }, [data]);
-
   const createObject = () => {
     if (data) {
       projects.columnOne = []; // Reset the array
@@ -77,6 +73,10 @@ const ProjectsSection = ({ title, subTitle }: ProjectSectionProps) => {
       });
     }
   };
+
+  useEffect(() => {
+    createObject();
+  }, [data]);
 
   return (
     <Section>
