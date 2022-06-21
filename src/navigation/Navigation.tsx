@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 
 import { Layout } from '../components';
 import { RoutesNavigation } from '../common/enums/navigation.enum';
@@ -17,6 +17,7 @@ const Navigation = () => {
           <Route path={`${RoutesNavigation.Project}/:projectID`} element={<ProjectPage />} />
           <Route path={RoutesNavigation.Certificates} element={<CertificatesPage />} />
           <Route path={`${RoutesNavigation.Certificate}/:certificateID`} element={<CertificatePage />} />
+          <Route path="*" element={<Navigate to={RoutesNavigation.Home} replace />} />
         </Routes>
       </Layout>
     </Router>
